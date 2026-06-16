@@ -1440,12 +1440,12 @@ async function buyData() {
         metadata: {
             phone: phone,
             network: parsedNetwork,          // Clean normalized string (e.g., 'telecel', 'mtn')
-            volumeInMB: parsedVolume,        // Raw, unquoted Integer (e.g., 2000)
+            volumeInMB: `${parsedVolume}`,        // Raw, unquoted Integer (e.g., 2)
             bundle_size: bundle.size,
             custom_fields: [
                 { display_name: "Phone Number", variable_name: "phone", value: phone },
                 { display_name: "Network", variable_name: "network", value: parsedNetwork },
-                { display_name: "Volume MB", variable_name: "volume_in_gb", value: parsedVolume },
+                { display_name: "Volume MB", variable_name: "volume_in_gb", value: `${parsedVolume}`},
                 { display_name: "Bundle ID", variable_name: "bundle_id", value: bundle.id }
             ]
         },
