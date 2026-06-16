@@ -693,8 +693,12 @@
     display: none; 
     position: fixed; inset: 0; z-index: 500;
     background: rgba(0,0,0,0.5); /* Dim background */
-    align-items: flex-end; /* Pushes the modal to the bottom */
+     align-items: flex-end;
+    padding-bottom: env(safe-area-inset-bottom); /* handles iPhone home bar */
     justify-content: center;
+    inset: 0;
+    top: -100px;            /* overshoot upward */
+    padding-top: 100px;     /* compensate so content stays in place */
 }
 
 .modal.open { display: flex; }
@@ -703,7 +707,9 @@
 .modal-box {
     background: #ffffff; /* White background for the card */
     width: 100%; max-width: 500px;
-    height: 90vh; /* Takes up most of the screen */
+     height: 90vh;           /* fallback */
+    height: 90dvh;          /* dynamic — accounts for browser chrome */
+    max-height: 90dvh;
     border-radius: 24px 24px 0 0;
     display: flex; flex-direction: column;
     overflow: hidden;
