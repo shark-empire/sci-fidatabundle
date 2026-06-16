@@ -199,6 +199,9 @@
         -webkit-backdrop-filter: blur(24px);
         border-bottom: 1px solid var(--border);
         z-index: 30;
+       animation: fadeUp 0.5s 0.1s ease both;
+        position: relative; overflow: hidden;
+       
     }
 
     .logo-group { display: flex; align-items: center; gap: 10px; }
@@ -478,6 +481,13 @@
         background: linear-gradient(90deg, transparent, var(--accent), transparent);
         opacity: 0.5;
     }
+
+.card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        border-color: var(--border-accent);
+    }
+
     .card-title {
         font-family: 'Syne', sans-serif;
         font-weight: 700; font-size: 0.88rem;
@@ -844,11 +854,23 @@
 
 /* Container for the checkout elements */
 .checkout-group {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 16px;
-    border-radius: 12px;
     border: 1px solid var(--border);
     margin-top: 10px;
+        background: var(--card-bg);
+        backdrop-filter: blur(20px);
+        padding: 20px 18px;
+        margin: 0 16px 16px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        box-shadow: 0 16px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+        animation: fadeUp 0.5s 0.1s ease both;
+        position: relative; overflow: hidden;
+    }
+
+.checkout-group:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        border-color: var(--border-accent);
     }
 
 
