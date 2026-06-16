@@ -75,6 +75,10 @@
         --header-bg:     rgba(5,10,20,0.85);
         --card-bg:       rgba(13,21,38,0.85);
         --input-bg:      rgba(0,0,0,0.3);
+    --mtn-color: #FFCC00;
+    --vodafone-color: #EF4444;
+    --at-color: #38BDF8;
+
     }
 
     @media (prefers-color-scheme: light) {
@@ -493,6 +497,8 @@
         display: grid; grid-template-columns: 1fr 1fr;
         gap: 8px; margin-bottom: 14px;
     }
+
+
     .network-card {
         padding: 12px 10px;
         border-radius: var(--radius-sm);
@@ -671,56 +677,119 @@
     /* ═══════════════════════════════════════
        MODAL (bottom sheet)
     ═══════════════════════════════════════ */
-    .modal {
-        display: none; position: fixed; inset: 0; z-index: 500;
-        background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
-        align-items: flex-end; justify-content: center;
-    }
-    .modal.open { display: flex; animation: fadeModal 0.2s ease; }
-    @keyframes fadeModal { from{opacity:0} to{opacity:1} }
 
-    .modal-box {
-        background: var(--surface);
-        width: 100%; max-width: 390px;
-        border-radius: 24px 24px 0 0;
-        border: 1px solid var(--border); border-bottom: none;
-        overflow: hidden;
-        box-shadow: 0 -20px 60px rgba(0,0,0,0.4);
-        animation: slideUpSheet 0.3s ease;
-    }
-    @keyframes slideUpSheet { from{transform:translateY(100%)} to{transform:translateY(0)} }
+/* Ensure the modal container is a flexbox that aligns to the bottom */
+.modal {
+    display: none; 
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(0,0,0,0.5); /* Dim background */
+    align-items: flex-end; /* Pushes the modal to the bottom */
+    justify-content: center;
+}
 
-    .modal-handle { display: flex; justify-content: center; padding: 12px 0 4px; }
-    .modal-handle-bar { width: 40px; height: 4px; background: var(--border); border-radius: 4px; }
-    .modal-header { padding: 4px 20px 0; display: flex; align-items: center; justify-content: space-between; }
-    .modal-header h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
-    .close-btn {
-        width: 30px; height: 30px; border-radius: 50%;
-        background: var(--surface2); border: 1px solid var(--border);
-        color: var(--muted2);
-        display: flex; align-items: center; justify-content: center;
-        cursor: pointer; font-size: 1rem; transition: all 0.2s;
-    }
-    .close-btn:hover { background: rgba(255,255,255,0.1); color: var(--text); }
-    .modal-body { padding: 16px 20px; }
-    .terms-item { display: flex; gap: 10px; padding: 11px 0; border-bottom: 1px solid var(--border); }
-    .terms-item:last-child { border-bottom: none; }
-    .terms-num {
-        width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
-        background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.2);
-        display: flex; align-items: center; justify-content: center;
-        font-size: 0.65rem; font-weight: 700; color: var(--accent);
-    }
-    .terms-text { font-size: 0.78rem; color: var(--muted2); line-height: 1.5; padding-top: 2px; }
-    .modal-footer { padding: 4px 20px 20px; }
-    .agree-btn {
-        width: 100%; padding: 13px;
-        background: linear-gradient(135deg, var(--accent), var(--accent2));
-        border: none; border-radius: var(--radius-sm);
-        font-weight: 700; font-family: 'Syne', sans-serif;
-        font-size: 0.875rem; color: white; cursor: pointer; transition: all 0.25s;
-    }
-    .agree-btn:hover { opacity: 0.9; }
+.modal.open { display: flex; }
+
+/* Style the modal to slide up and cover the screen */
+.modal-box {
+    background: #ffffff; /* White background for the card */
+    width: 100%; max-width: 500px;
+    height: 90vh; /* Takes up most of the screen */
+    border-radius: 24px 24px 0 0;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-body {
+    flex: 1;
+    overflow-y: auto; /* This makes the list scrollable */
+    padding: 16px;
+}
+
+/* Ensure the Modal looks like the one in image.png */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.bundle-selector {
+    width: 100%; padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--input-bg);
+    color: var(--text);
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer;
+      transition: all 0.3s ease; /* Add this for smooth color shifting */
+}
+
+/* Define helper classes for the color themes */
+.bundle-selector.MTN { border-color: var(--yellow); background: rgba(245,158,11,0.05); }
+.bundle-selector.Vodafone { border-color: var(--red); background: rgba(239,68,68,0.05); }
+.bundle-selector.AirtelTigo { border-color: var(--accent); background: rgba(56,189,248,0.05); }
+
+
+.bundle-option {
+    padding: 15px; border-bottom: 1px solid var(--border);
+    cursor: pointer;
+}
+.bundle-option:hover { background: var(--surface2); }
+
+/* 1. Base style: Remove background from here */
+.bundle-item {
+   background-color: #10B981;
+    color: #fff;
+    padding: 16px 20px;
+    margin: 0 16px 12px 16px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: 1px solid rgba(255,255,255,0.1); /* Optional: cleaner look */
+}
+
+/* 2. Specific Network Overrides */
+.bundle-item.MTN { background: #FFCC00; color: #000; }
+.bundle-item.Vodafone { background: #EF4444; color: #fff; }
+.bundle-item.AirtelTigo { background: #38BDF8; color: #fff; }
+
+/* 3. Ensure the Modal box itself adapts if you want a full-sheet theme */
+.modal-box.MTN { border-top: 5px solid #FFCC00; }
+.modal-box.Vodafone { border-top: 5px solid #EF4444; }
+.modal-box.AirtelTigo { border-top: 5px solid #38BDF8; }
+
+/* Ensure the Select button looks distinct */
+.select-btn {
+    background: rgba(0,0,0,0.15);
+    color: inherit; /* Inherits the black/white from the parent */
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+
+
+
+.bundle-item:hover {
+    transform: scale(0.98);
+}
+
+
 
     /* ═══════════════════════════════════════
        TOAST
@@ -764,6 +833,51 @@
     color: var(--accent); /* This makes the icons match your blue theme */
     font-size: 1.4rem;
 }
+
+
+
+
+
+
+
+
+
+/* Container for the checkout elements */
+.checkout-group {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-top: 10px;
+    }
+
+
+/* Ensure the button looks consistent within the group */
+.main-btn {
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(34, 211, 161, 0.2);
+}
+
+/* Enhancing the input focus for a polished feel */
+.phone-input-wrap {
+    border: 1px solid var(--border);
+    background: var(--input-bg);
+}
+
+/* Refined price display to match the card theme */
+.price-display {
+    margin: 16px 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(34, 211, 161, 0.1);
+}
+
+.main-btn:disabled {
+    background: #475569 !important; /* Visual change to indicate "waiting" */
+    cursor: wait;
+    opacity: 0.7;
+}
+
 
 
 </style>
@@ -832,8 +946,6 @@
         <div class="card">
             <div class="card-title"><span> <i class="fas fa-satellite-dish"></i> </span> Purchase Data Bundle</div>
 
-            <div class="field-group">
-                <div class="field-label">🌐 Select Network</div>
 
 <div class="network-grid">
     <div class="network-card" data-network="MTN" onclick="selectNetwork('MTN', this)">
@@ -849,36 +961,51 @@
     </div>
 </div>
 
-            </div>
 
-            <div class="field-group">
-                <div class="field-label">📦 Data Bundle</div>
-                <select id="bundle" onchange="updatePrice()">
-                    <option value="" disabled selected>Choose a bundle...</option>
-                </select>
-            </div>
-
-     <div class="field-group">
-    <div class="field-label">📱 Recipient Number</div>
-    <div class="phone-input-wrap">
-        <div class="phone-prefix">
-            <span class="flag"><img src="https://flagcdn.com/w20/gh.png" alt="GH" style="width: 20px; border-radius: 2px;"></span>
-            <span>+233</span>
-        </div>
-        <input type="tel" id="phone" placeholder="054 000 0000" maxlength="10">
+           
+<div class="field-group">
+    <div class="field-label">📦 Data Bundle</div>
+    <!-- This replaces your <select> -->
+    <div id="bundleTrigger" class="bundle-selector" onclick="openBundleModal()">
+        <span id="selectedBundleText">Choose a bundle...</span>
+        <i class="fas fa-chevron-down"></i>
     </div>
-    <div id="nameVerification" style="font-size: 0.75rem; font-weight: 600; margin-top: 6px; padding: 2px 4px; display: none;"></div>
 </div>
 
-            <div class="price-display" id="priceDisplay">
-                <span class="price-label">Total to Pay</span>
-                <span class="price-amount" id="priceAmount">GH₵ 0.00</span>
+
             </div>
 
-            <button id="buyBtn" class="main-btn" onclick="buyData()">
-                <div class="spinner" id="spinner"></div>
-                <span id="btnText">🛒 Buy Now</span>
-            </button>
+
+
+  
+<!-- New Grouped Container -->
+<div class="checkout-group">
+
+   <input type="hidden" id="bundle" name="bundle">
+
+    <div class="field-group">
+        <div class="field-label">📱 Recipient Number</div>
+        <div class="phone-input-wrap">
+            <div class="phone-prefix">
+                <span class="flag"><img src="https://flagcdn.com/w20/gh.png" alt="GH" style="width: 20px; border-radius: 2px;"></span>
+                <span>+233</span>
+            </div>
+            <input type="tel" id="phone" placeholder="054 000 0000" maxlength="10">
+        </div>
+        <div id="nameVerification" style="font-size: 0.75rem; font-weight: 600; margin-top: 6px; padding: 2px 4px; display: none;"></div>
+    </div>
+
+    <div class="price-display" id="priceDisplay">
+        <span class="price-label">Total to Pay</span>
+        <span class="price-amount" id="priceAmount">GH₵ 0.00</span>
+    </div>
+
+    <button id="buyBtn" class="main-btn" onclick="buyData()">
+        <div class="spinner" id="spinner"></div>
+        <span id="btnText">🛒 Buy Now</span>
+    </button>
+</div>
+
         </div>
 
         <!-- ACTION CARDS -->
@@ -900,6 +1027,25 @@
 </a>
             </div>
         </div>
+
+
+
+
+<div id="bundleModal" class="modal">
+    <div class="modal-box">
+        <div class="modal-handle"></div>
+        <div class="modal-header">
+            <h3 id="modalTitle">Select Bundle</h3>
+            <button class="close-btn" onclick="closeModal('bundleModal')">✕</button>
+        </div>
+        <div class="modal-body" id="bundleList"></div>
+    </div>
+</div>
+
+</div>
+
+
+
 
         <!-- FOOTER -->
         <footer>
@@ -967,6 +1113,34 @@ const _supabase = supabase.createClient(
 let allBundles = [];
 let selectedNetwork = null;
 let lastVerifiedNumber = ""; // Tracks lookups to prevent duplicate webhook spam
+
+
+
+// Add this function to your existing <script> block
+async function loadBundles() {
+    try {
+        // Fetch data from the 'bundles' table
+        const { data, error } = await _supabase
+            .from('bundles')
+            .select('*');
+
+        if (error) {
+            console.error("Error fetching bundles:", error);
+            showToast("Failed to load bundles", "error");
+            return;
+        }
+
+        // Store the data in your global variable
+        allBundles = data;
+        console.log("Bundles loaded:", allBundles);
+    } catch (err) {
+        console.error("Unexpected error:", err);
+    }
+}
+
+
+
+
 
 // ═══════════════════════════════════════
 // MOBILE MONEY NAME VERIFICATION
@@ -1066,9 +1240,64 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("termsModal").addEventListener("click", e => { if (e.target === e.currentTarget) closeModal(); });
 });
 
+
+
+
+// Open the bundle modal and inject list
+
+// 1. Unified function to open and render
+function openBundleModal(network = selectedNetwork) {
+    if (!network) {
+        showToast("Please select a network first", "error");
+        return;
+    }
+
+    const modal = document.getElementById('bundleModal');
+    const list = document.getElementById('bundleList');
+    const title = document.getElementById('modalTitle');
+    
+
+   const modalBox = document.querySelector('.modal-box');
+    
+    modalBox.className = `modal-box ${network}`;
+
+    title.textContent = `${network} Data Bundles`;
+    list.innerHTML = ''; // Clear previous
+
+    const filtered = allBundles.filter(b => b.network.toLowerCase() === network.toLowerCase());
+
+    filtered.forEach(b => {
+        const div = document.createElement('div');
+        div.className = 'bundle-item ${network}';
+        
+        // Use a clean event listener
+        div.onclick = () => {
+            selectBundle(b);
+        };
+        
+        div.innerHTML = `
+            <div class="bundle-item.${network}">
+                <strong>${b.size}</strong><br>
+                <small>GH₵ ${b.price}</small>
+            </div>
+            <button class="select-btn">Select</button>
+        `;
+        list.appendChild(div);
+    });
+
+    modal.classList.add('open');
+}
+
+
+function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+}
+
+
 // ═══════════════════════════════════════
 // INTERACTIVE APPS FLOW CONTROLLERS
 // ═══════════════════════════════════════
+
 function selectNetwork(network, el) {
     selectedNetwork = network;
     document.querySelectorAll('.network-card').forEach(c => c.classList.remove('selected'));
@@ -1080,19 +1309,67 @@ function selectNetwork(network, el) {
     // Reset verification tracker so network changes re-validate numbers accurately
     lastVerifiedNumber = "";
     verifyMobileMoneyName();
+
+    // Open the modal
+    const modal = document.getElementById('bundleModal');
+    modal.classList.add('open');
+    
+    // Set title dynamically
+    document.getElementById('modalTitle').textContent = `${network} Data Bundles`;
+    
+    // Fetch/Render bundles for that specific network
+    renderBundlesForNetwork(network);
 }
 
-async function loadBundles() {
-    try {
-        const { data, error } = await _supabase.from('bundles').select('*');
-        if (error) throw error;
-        allBundles = data;
-        populateBundles(data);
-    } catch (err) {
-        console.error("Fetch Error:", err.message);
-        showToast('Failed to load bundles. Please refresh.', 'error');
-    }
+// 2. Build the list dynamically
+
+
+
+function renderBundlesForNetwork(network) {
+    const list = document.getElementById('bundleList');
+    const modalBox = document.querySelector('.modal-box');
+    
+    modalBox.className = `modal-box ${network}`;
+    list.innerHTML = ''; 
+
+    const filtered = allBundles.filter(b => b.network.toLowerCase() === network.toLowerCase());
+    
+
+console.log("Bundles found for " + network + ":", filtered);
+
+    filtered.forEach(b => {
+        const div = document.createElement('div');
+        div.className = `bundle-item ${network}`; 
+        div.onclick = () => selectBundle(b);
+        
+        // Removed inline styles to let the CSS class handle it
+        div.innerHTML = `
+            <div>
+                <strong>${b.size}</strong>
+                <small>${b.price ? 'GH₵ ' + parseFloat(b.price).toFixed(2) : ''}</small>
+            </div>
+            <button class="select-btn">Select</button>
+        `;
+        list.appendChild(div);
+    });
 }
+
+
+
+
+
+function selectBundle(bundle) {
+    document.getElementById('bundle').value = bundle.id;
+    document.getElementById('selectedBundleText').textContent = `${bundle.size} - GH₵${bundle.price}`;
+    
+    // Ensure the color sticks to the bundle's network color
+    const trigger = document.getElementById('bundleTrigger');
+    trigger.className = `bundle-selector ${bundle.network}`; 
+    
+    closeModal('bundleModal');
+    updatePrice();
+}
+
 
 function populateBundles(data) {
     const sel = document.getElementById('bundle');
@@ -1134,17 +1411,17 @@ async function buyData() {
     btnText.textContent = 'Opening Payment...';
 
     // ═══════════ NEW FRONTEND PARSING LOGIC ═══════════
-    // 1. Parse Data Size into explicit MB Integers
-    let parsedVolume = 1000; // default fallback
+    // 1. Parse Data Size into explicit GB Integers
+    let parsedVolume = 1; // default fallback
     const rawSize = String(bundle.size).toUpperCase().trim();
-    if (rawSize.includes('1GB')) parsedVolume = 1000;
-    else if (rawSize.includes('2GB')) parsedVolume = 2000;
-    else if (rawSize.includes('3GB')) parsedVolume = 3000;
-    else if (rawSize.includes('4GB')) parsedVolume = 4000;
+    if (rawSize.includes('1GB')) parsedVolume = 1;
+    else if (rawSize.includes('2GB')) parsedVolume = 2;
+    else if (rawSize.includes('3GB')) parsedVolume = 3;
+    else if (rawSize.includes('4GB')) parsedVolume = 4;
     else {
         // Fallback or attempt dynamic extraction if size matches things like "5GB"
         const matchedNum = rawSize.match(/\d+/);
-        if (matchedNum) parsedVolume = parseInt(matchedNum[0], 10) * 1000;
+        if (matchedNum) parsedVolume = parseInt(matchedNum[0], 10) * 1;
     }
 
     // 2. Map legacy names like 'vodafone' to Telecel officially
@@ -1168,7 +1445,7 @@ async function buyData() {
             custom_fields: [
                 { display_name: "Phone Number", variable_name: "phone", value: phone },
                 { display_name: "Network", variable_name: "network", value: parsedNetwork },
-                { display_name: "Volume MB", variable_name: "volume_in_mb", value: parsedVolume },
+                { display_name: "Volume MB", variable_name: "volume_in_gb", value: parsedVolume },
                 { display_name: "Bundle ID", variable_name: "bundle_id", value: bundle.id }
             ]
         },
