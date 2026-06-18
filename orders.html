@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order | Sci-Fi Data</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2338BDF8%22/><text y=%221.2em%22 x=%228%22 font-size=%2265%22 font-weight=%22bold%22 font-family=%22Arial%22 fill=%22white%22>SF</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ── Tab Toggle ── */
+        .tab-group {
+            display: flex; background: var(--surface2);
+            border-radius: 12px; padding: 4px; gap: 4px;
+            margin-bottom: 16px;
+        }
+        .tab-btn {
+            flex: 1; padding: 9px;
+            border: none; border-radius: 9px;
+            background: transparent;
+            font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 600;
+            color: var(--muted); cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn.active { background: var(--accent); color: #fff; }
+
+        /* ── Paste row ── */
+        .ref-input-row {
+            display: flex; gap: 8px; align-items: stretch;
+
+        }
+        .ref-input-row input { flex: 1; }
+        .paste-btn {
+            padding: 0 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            background: var(--surface2);
+            color: var(--muted2);
+            font-size: 0.75rem; font-weight: 600;
+            cursor: pointer; white-space: nowrap;
+            transition: all 0.2s; flex-shrink: 0;
+        }
+        .paste-btn:hover { border-color: var(--border-accent); color: var(--accent); }
+        .paste-btn:active { transform: scale(0.96); }
+
+        /* ── Result Cards ── */
+        .result-area {
+ margin-top: 8px;
+         box-shadow: 0 16px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+    animation: fadeUp 0.5s 0.1s ease both;
+    position: relative; overflow: hidden;
+      }
+
+.result-area::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.5;}
+
+        .order-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 18px;
+            margin-bottom: 12px;
+            animation: fadeUp 0.3s ease both;
+            position: relative; overflow: hidden;
+        }
+        .order-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.4;
+        }
+        .order-top {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .order-ref {
+            font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700;
+            color: var(--accent);
+        }
+        .order-time { font-size: 0.65rem; color: var(--muted); margin-top: 2px; }
+
+        .status-badge {
+            display: flex; align-items: center; gap: 5px;
+            padding: 3px 10px; border-radius: 20px;
+            font-size: 0.65rem; font-weight: 700; white-space: nowrap;
+        }
+        .status-badge.delivered  { background: rgba(34,211,161,0.1);  border: 1px solid rgba(34,211,161,0.3);  color: var(--green); }
+        .status-badge.processing { background: rgba(245,158,11,0.1);  border: 1px solid rgba(245,158,11,0.3);  color: var(--yellow); }
+        .status-badge.failed     { background: rgba(239,68,68,0.1);   border: 1px solid rgba(239,68,68,0.3);   color: var(--red); }
+
+        .order-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .meta-item { font-size: 0.72rem; }
+        .meta-item .meta-label { color: var(--muted); margin-bottom: 2px; }
+        .meta-item .meta-value { font-weight: 600; color: var(--text); }
+
+        .order-divider { height: 1px; background: var(--border); margin: 12px 0; }
+
+        .order-actions { display: flex; gap: 8px; }
+        .mini-btn {
+            flex: 1; padding: 8px;
+            border-radius: 8px; border: 1px solid var(--border);
+            background: var(--surface2);
+            font-size: 0.72rem; font-weight: 600;
+            color: var(--muted2); cursor: pointer; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 5px;
+            transition: all 0.2s;
+        }
+        .mini-btn:hover { border-color: var(--border-accent); color: var(--text); }
+
+        /* ── Empty / Error state ── */
+        .state-msg {
+            text-align: center; padding: 32px 20px;
+            animation: fadeUp 0.3s ease both;
+        }
+        .state-msg .state-icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .state-msg h3 {
+            font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .state-msg p { font-size: 0.8rem; color: var(--muted2); line-height: 1.6; max-width: 240px; margin: 0 auto; }
+
+        /* ── Loading skeleton ── */
+        .skeleton-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 18px;
+            margin-bottom: 12px;
+        }
+        .skeleton-line {
+            height: 12px; border-radius: 6px;
+            background: linear-gradient(90deg, var(--surface2) 25%, var(--surface) 50%, var(--surface2) 75%);
+            background-size: 200% 100%;
+            animation: skeletonShimmer 1.4s infinite;
+            margin-bottom: 10px;
+        }
+        .skeleton-line.short { width: 45%; }
+        .skeleton-line.medium { width: 65%; }
+        @keyframes skeletonShimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+.footer {
+    margin-top: 40px;
+    padding: 24px 20px 100px; /* leaves room for bottom nav */
+    text-align: center;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.04)
+    );
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+}
+
+.footer-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+
+    background: linear-gradient(
+        135deg,
+        #38BDF8,
+        #22D3A1
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.footer-logo {
+    -webkit-text-fill-color: initial;
+    color: #22D3A1;
+}
+
+.footer-text {
+    font-size: 0.75rem;
+    color: var(--muted2);
+    margin-bottom: 6px;
+}
+
+.footer-company {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+    </style>
+</head>
+<body>
+<div class="phone-shell">
+
+    <!-- HEADER -->
+    <header class="app-header">
+        <a href="index.html" class="logo-group" style="text-decoration:none;">
+            <img src="https://i.imgur.com/wKOG6wP.png" alt="Sci-Fi" class="logo-img">
+            <div class="logo-text">
+                <strong>Sci-Fi Data</strong>
+                <span>Official Platform</span>
+            </div>
+        </a>
+        <div class="header-right">
+            <div class="status-pill"><div class="status-dot"></div>Live</div>
+        </div>
+    </header>
+
+    <!-- SCREEN -->
+    <div class="screen">
+        <div class="screen-bg">
+            <div class="bg-grid"></div>
+            <div class="bg-orb1"></div>
+            <div class="bg-orb2"></div>
+        </div>
+        <div class="screen-content">
+
+            <!-- HERO -->
+            <section class="page-hero">
+                <div class="hero-badge">📦 Order Tracking</div>
+                <h1>Track Your<br><span class="highlight">Data Order</span></h1>
+                <p>Look up delivery status by transaction reference or phone number.</p>
+            </section>
+
+            <!-- SEARCH CARD -->
+            <div class="card">
+                <div class="card-title"><i class="fas fa-magnifying-glass"></i> Find Order</div>
+
+                <div class="tab-group">
+                    <button class="tab-btn active" id="tabRef"   onclick="switchTab('ref')">By Reference</button>
+                    <button class="tab-btn"        id="tabPhone" onclick="switchTab('phone')">By Phone</button>
+                </div>
+
+                <!-- Panel: Reference -->
+                <div id="panelRef">
+                    <div class="field-group">
+                        <div class="field-label">🔑 Transaction Reference</div>
+                        <div class="ref-input-row">
+                            <input type="text" id="refInput"
+                                placeholder="e.g. SF-1718123456-482910"
+                                autocomplete="off" autocorrect="off" autocapitalize="off" />
+                            <button class="paste-btn" onclick="pasteRef()">📋 Paste</button>
+                        </div>
+                    </div>
+                    <button class="main-btn" onclick="searchByRef()">
+                        <div class="spinner" id="spinnerRef"></div>
+                        <span id="btnTextRef"><i class="fas fa-search"></i>&nbsp; Search Order</span>
+                    </button>
+                </div>
+
+                <!-- Panel: Phone -->
+                <div id="panelPhone" style="display:none;">
+                    <div class="field-group">
+                        <div class="field-label">📱 Phone Number Used</div>
+                        <div class="phone-input-wrap">
+                            <div class="phone-prefix">
+                                <img src="https://flagcdn.com/w20/gh.png" alt="GH" style="width:20px;border-radius:2px;">
+                                <span>+233</span>
+                            </div>
+                            <input type="tel" id="phoneInput" placeholder="054 000 0000" maxlength="10">
+                        </div>
+                    </div>
+                    <button disabled="" class="main-btn" onclick="searchByPhone()">
+                        <div class="spinner" id="spinnerPhone"></div>
+                        <span id="btnTextPhone"><i class="fas fa-search"></i>&nbsp; Search Orders</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- RESULTS -->
+
+
+            <div id="resultArea" class="result-area" style="padding: 0 16px;"></div>
+
+
+        </div>
+
+<footer class="footer">
+    <div class="footer-brand">
+        <span class="footer-logo">⚡</span>
+        <span>Sci-Fi Data</span>
+    </div>
+
+    <div class="footer-text">
+        © 2026 Sci-Fi Data. All rights reserved.
+    </div>
+
+    <div class="footer-company">
+        Powered by Sci-Fi Tech Inc
+    </div>
+</footer>
+
+
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon">🛒</span><span>Buy Data</span>
+        </a>
+        <a href="orders.html" class="nav-item active">
+            <span class="nav-icon">📦</span><span>Orders</span>
+        </a>
+        <a href="how-it-works.html" class="nav-item">
+            <span class="nav-icon">📖</span><span>Guide</span>
+        </a>
+        <a href="https://wa.me/233540753328" target="_blank" class="nav-item">
+            <span class="nav-icon">💬</span><span>Support</span>
+        </a>
+    </nav>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+const recent = JSON.parse(localStorage.getItem("sf_recent_refs") || "[]");
+if (recent.length) {
+    // render clickable ref chips the user can tap to look up
+}
+
+// ─── CONFIG ───
+// Now only the Webhook URL is needed
+const ORDER_WEBHOOK_URL = "https://cloud.activepieces.com/api/v1/webhooks/ndWxkw35jrCn2zSlUU4NB/sync";
+
+// ─── Auto-fill from success page URL param ───
+document.addEventListener("DOMContentLoaded", () => {
+    const ref = new URLSearchParams(window.location.search).get('ref');
+    if (ref) {
+        document.getElementById('refInput').value = ref;
+        setTimeout(() => searchByRef(), 400);
+    }
+});
+
+// ─── Tab switch ───
+function switchTab(tab) {
+    const isRef = tab === 'ref';
+    document.getElementById('tabRef').classList.toggle('active', isRef);
+    document.getElementById('tabPhone').classList.toggle('active', !isRef);
+    document.getElementById('panelRef').style.display   = isRef ? 'block' : 'none';
+    document.getElementById('panelPhone').style.display = isRef ? 'none'  : 'block';
+    document.getElementById('resultArea').innerHTML = '';
+}
+
+// ─── Paste button ───
+async function pasteRef() {
+    try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById('refInput').value = text.trim();
+        showToast('Reference pasted', 'success');
+    } catch {
+        showToast('Allow clipboard access to paste', 'error');
+    }
+}
+
+// ─── Button loading state ───
+function setLoading(id, loading) {
+    document.getElementById('spinner' + id).style.display = loading ? 'block' : 'none';
+    document.getElementById('btnText'  + id).style.opacity = loading ? '0' : '1';
+}
+
+// ─── Search by Reference ───
+async function searchByRef() {
+    const ref = document.getElementById('refInput').value.trim();
+    if (!ref) { showToast('Enter a transaction reference', 'error'); return; }
+
+    setLoading('Ref', true);
+    renderSkeleton();
+
+    try {
+        // We no longer call Supabase here. Just pass the ref to Activepieces.
+        const res = await fetch(ORDER_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: 'reference', reference: ref })
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const result = await res.json();
+
+        if (result.error) {
+            renderEmpty(`Error: ${result.error}`, 'Please try again or contact support.');
+        } else if (!result.orders?.length) {
+            renderEmpty(`No order found for <strong>${ref}</strong>`, 'Check the reference or contact support.');
+        } else {
+            renderOrders(result.orders);
+        }
+    } catch (err) {
+        renderEmpty('Could not reach service', 'Network error. Please try again.');
+    }
+
+    setLoading('Ref', false);
+}
+
+// ─── Search by Phone ───
+async function searchByPhone() {
+    const phone = document.getElementById('phoneInput').value.trim().replace(/\s+/g, '');
+    if (phone.length < 10) { showToast('Enter a valid 10-digit number', 'error'); return; }
+
+    setLoading('Phone', true);
+    renderSkeleton();
+
+    try {
+        const res = await fetch(ORDER_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: 'phone', phone: phone })
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const result = await res.json();
+
+        if (result.error) {
+            renderEmpty(`Error: ${result.error}`, 'Please try again or contact support.');
+        } else if (!result.orders?.length) {
+            renderEmpty('No orders found', 'Make sure you used the same number at checkout.');
+        } else {
+            renderOrders(result.orders);
+        }
+    } catch (err) {
+        renderEmpty('Could not reach service', 'Network error. Please try again.');
+    }
+
+    setLoading('Phone', false);
+}
+
+
+// ─── Render: skeleton while loading ───
+function renderSkeleton() {
+    document.getElementById('resultArea').innerHTML = `
+        <div class="skeleton-card">
+            <div class="skeleton-line medium"></div>
+            <div class="skeleton-line short"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line medium"></div>
+        </div>`;
+}
+
+// ─── Render: order cards ───
+function renderOrders(orders) {
+    const area = document.getElementById('resultArea');
+    const count = orders.length;
+    area.innerHTML = `<p style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;">${count} order${count !== 1 ? 's' : ''} found</p>`;
+
+   const badgeMap = {
+    delivered:  { cls: 'delivered',  label: '✅ Delivered' },
+    success:    { cls: 'delivered',  label: '✅ Delivered' },
+    completed:  { cls: 'delivered',  label: '✅ Delivered' },  // ← add this
+    processing: { cls: 'processing', label: '⏳ Processing' },
+    pending:    { cls: 'processing', label: '⏳ Processing' },
+    failed:     { cls: 'failed',     label: '❌ Failed' },
+};
+
+
+    orders.forEach(o => {
+        const status  = (o.status || 'processing').toLowerCase();
+        const badge   = badgeMap[status] || badgeMap.processing;
+        const date    = o.created_at
+            ? new Date(o.created_at).toLocaleString('en-GH', { dateStyle: 'medium', timeStyle: 'short' })
+            : 'Unknown';
+        const network = (o.network || 'N/A').toUpperCase();
+        const phone   = o.phone      || 'N/A';
+        const size    = o.bundle_size || o.volume || 'N/A';
+        const amount  = o.amount
+            ? `GH₵ ${parseFloat(o.amount / 100).toFixed(2)}`
+            : 'N/A';
+        const ref     = o.reference  || '';
+        const waMsg   = encodeURIComponent(`Hi, I need help with order ${ref}`);
+
+        area.innerHTML += `
+        <div class="order-card">
+            <div class="order-top">
+                <div>
+                    <div class="order-ref">${ref || 'N/A'}</div>
+                    <div class="order-time">${date}</div>
+                </div>
+                <div class="status-badge ${badge.cls}">${badge.label}</div>
+            </div>
+            <div class="order-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Network</div>
+                    <div class="meta-value">${network}</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Bundle</div>
+                    <div class="meta-value">${size}</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Phone</div>
+                    <div class="meta-value">${phone}</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Amount Paid</div>
+                    <div class="meta-value">${amount}</div>
+                </div>
+            </div>
+            <div class="order-divider"></div>
+            <div class="order-actions">
+                <a href="https://wa.me/233540753328?text=${waMsg}" target="_blank" class="mini-btn">💬 Get Help</a>
+                <a href="index.html" class="mini-btn">🛒 Buy Again</a>
+            </div>
+        </div>`;
+    });
+}
+
+// ─── Render: empty / error state ───
+function renderEmpty(title, sub) {
+    document.getElementById('resultArea').innerHTML = `
+    <div class="state-msg">
+        <div class="state-icon">🔍</div>
+        <h3>${title}</h3>
+        <p>${sub}</p>
+        <a href="https://wa.me/233540753328" target="_blank"
+           style="display:inline-block;margin-top:16px;padding:10px 20px;
+                  background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.3);
+                  border-radius:10px;color:var(--accent);text-decoration:none;
+                  font-size:0.78rem;font-weight:600;">💬 Contact Support</a>
+    </div>`;
+}
+
+// ─── Toast ───
+function showToast(msg, type = '') {
+    const toast = document.getElementById('toast');
+    toast.innerHTML = `<span>${{ error:'⚠️', success:'✅' }[type] || 'ℹ️'}</span> ${msg}`;
+    toast.className = `toast ${type} show`;
+    setTimeout(() => toast.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works | Sci-Fi Data</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2338BDF8%22/><text y=%221.2em%22 x=%228%22 font-size=%2265%22 font-weight=%22bold%22 font-family=%22Arial%22 fill=%22white%22>SF</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ── Step Cards ── */
+        .steps-section {
+            padding: 0 16px;
+            display: flex; flex-direction: column; gap: 12px;
+            margin-bottom: 20px;
+        }
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px 16px;
+            display: flex; gap: 14px; align-items: flex-start;
+            animation: fadeUp 0.4s ease both;
+            position: relative; overflow: hidden;
+        }
+        .step-card:nth-child(1) { animation-delay: 0.05s; }
+        .step-card:nth-child(2) { animation-delay: 0.10s; }
+        .step-card:nth-child(3) { animation-delay: 0.15s; }
+        .step-card:nth-child(4) { animation-delay: 0.20s; }
+        .step-card:nth-child(5) { animation-delay: 0.25s; }
+
+        .step-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.3;
+        }
+
+        .step-num {
+            width: 38px; height: 38px;
+            border-radius: 12px;
+            background: rgba(56,189,248,0.1);
+            border: 1px solid rgba(56,189,248,0.25);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800;
+            color: var(--accent); flex-shrink: 0;
+        }
+        .step-body {}
+        .step-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.88rem; font-weight: 700;
+            margin-bottom: 5px; color: var(--text);
+        }
+        .step-desc { font-size: 0.78rem; color: var(--muted2); line-height: 1.6; }
+        .step-desc strong { color: var(--text); }
+
+        /* ── Network Table ── */
+        .network-table {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            margin: 0 16px 20px;
+            animation: fadeUp 0.4s 0.3s ease both;
+        }
+        .table-header {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700;
+        }
+        .net-row {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .net-row:last-child { border-bottom: none; }
+        .net-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .net-dot.mtn       { background: #FFCC00; box-shadow: 0 0 6px #FFCC00; }
+        .net-dot.telecel   { background: #EF4444; box-shadow: 0 0 6px #EF4444; }
+        .net-dot.airteltigo{ background: #38BDF8; box-shadow: 0 0 6px #38BDF8; }
+        .net-row-name { font-size: 0.8rem; font-weight: 600; flex: 1; }
+        .net-row-code { font-size: 0.7rem; color: var(--muted); font-family: monospace; }
+        .net-row-time { font-size: 0.7rem; color: var(--green); font-weight: 600; }
+
+        /* ── FAQ ── */
+        .faq-section {
+            padding: 0 16px;
+            margin-bottom: 20px;
+            animation: fadeUp 0.4s 0.35s ease both;
+        }
+        .faq-title {
+            font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
+            margin-bottom: 12px; color: var(--text);
+            display: flex; align-items: center; gap: 7px;
+        }
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        .faq-q {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 13px 16px;
+            cursor: pointer;
+            font-size: 0.8rem; font-weight: 600;
+            background: var(--surface);
+            transition: background 0.2s;
+        }
+        .faq-q:hover { background: var(--surface2); }
+        .faq-q .faq-arrow { color: var(--muted); font-size: 0.8rem; transition: transform 0.25s; }
+        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        .faq-a {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            font-size: 0.78rem; color: var(--muted2); line-height: 1.7;
+            padding: 0 16px;
+            background: var(--surface2);
+        }
+        .faq-item.open .faq-a { max-height: 200px; padding: 12px 16px; }
+
+        /* ── CTA ── */
+        .cta-section {
+            margin: 0 16px 20px;
+            background: linear-gradient(135deg, rgba(56,189,248,0.1), rgba(34,211,161,0.07));
+            border: 1px solid rgba(56,189,248,0.2);
+            border-radius: 18px;
+            padding: 22px 18px;
+            text-align: center;
+            animation: fadeUp 0.4s 0.4s ease both;
+        }
+        .cta-section h3 {
+            font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800;
+            margin-bottom: 6px;
+        }
+        .cta-section p { font-size: 0.78rem; color: var(--muted2); margin-bottom: 16px; line-height: 1.6; }
+        .cta-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #20b2aa, #10B981);
+            border: none; border-radius: 10px;
+            font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700;
+            color: white; text-decoration: none; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(34,211,161,0.4); }
+
+        /* ── Section Label ── */
+        .section-label {
+            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; color: var(--muted);
+            padding: 0 16px; margin-bottom: 10px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .section-label::after {
+            content: ''; flex: 1; height: 1px; background: var(--border);
+        }
+    </style>
+</head>
+<body>
+<div class="phone-shell">
+
+    <!-- HEADER -->
+    <header class="app-header">
+        <a href="index.html" class="logo-group" style="text-decoration:none;">
+            <img src="https://i.imgur.com/wKOG6wP.png" alt="Sci-Fi" class="logo-img">
+            <div class="logo-text">
+                <strong>Sci-Fi Data</strong>
+                <span>Official Platform</span>
+            </div>
+        </a>
+        <div class="header-right">
+            <div class="status-pill"><div class="status-dot"></div>Live</div>
+        </div>
+    </header>
+
+    <!-- SCREEN -->
+    <div class="screen">
+        <div class="screen-bg">
+            <div class="bg-grid"></div>
+            <div class="bg-orb1"></div>
+            <div class="bg-orb2"></div>
+        </div>
+        <div class="screen-content">
+
+            <!-- PAGE HERO -->
+            <section class="page-hero">
+                <div class="hero-badge">📖 Quick Guide</div>
+                <h1>How To<br><span class="highlight">Buy Data</span></h1>
+                <p>Buy and receive mobile data in under 2 minutes. Here's exactly how it works.</p>
+            </section>
+
+            <!-- STEPS -->
+            <div class="section-label">Step-by-step</div>
+            <div class="steps-section">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <div class="step-title">Pick Your Network</div>
+                        <div class="step-desc">Tap <strong>MTN Ghana</strong>, <strong>Telecel</strong>, or <strong>AirtelTigo</strong> depending on whose SIM card you want data on.</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
+                        <div class="step-title">Choose a Bundle</div>
+                        <div class="step-desc">A list of available bundles will pop up. Select the size and price that works for you — from <strong>1GB up to 10GB+</strong>.</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <div class="step-body">
+                        <div class="step-title">Enter Recipient Number</div>
+                        <div class="step-desc">Type the 10-digit number that should receive the data. You'll see the <strong>registered account name</strong> appear to confirm it's correct.</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <div class="step-body">
+                        <div class="step-title">Pay with Paystack</div>
+                        <div class="step-desc">Tap <strong>Buy Now</strong>. A secure Paystack checkout will open. You can pay via <strong>Mobile Money, Card, or Bank Transfer</strong>.</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">5</div>
+                    <div class="step-body">
+                        <div class="step-title">Receive Data Instantly</div>
+                        <div class="step-desc">Once payment is confirmed, the data bundle is automatically sent to the phone number. Usually arrives <strong>within 2 minutes</strong>.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NETWORK TABLE -->
+            <div class="section-label" style="margin-bottom:10px;">Supported networks</div>
+            <div class="network-table">
+                <div class="table-header">🛰️ Network Coverage</div>
+                <div class="net-row">
+                    <div class="net-dot mtn"></div>
+                    <div class="net-row-name">MTN Ghana</div>
+                    <div class="net-row-code">MTN</div>
+                    <div class="net-row-time">~1 min</div>
+                </div>
+                <div class="net-row">
+                    <div class="net-dot telecel"></div>
+                    <div class="net-row-name">Telecel (Vodafone)</div>
+                    <div class="net-row-code">VOD</div>
+                    <div class="net-row-time">~2 min</div>
+                </div>
+                <div class="net-row">
+                    <div class="net-dot airteltigo"></div>
+                    <div class="net-row-name">AirtelTigo</div>
+                    <div class="net-row-code">ATL</div>
+                    <div class="net-row-time">~2 min</div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="section-label" style="margin-bottom:10px;">FAQs</div>
+            <div class="faq-section">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">What if I entered the wrong number? <span class="faq-arrow">▾</span></div>
+                    <div class="faq-a">Unfortunately, data sent to the wrong number cannot be recalled. Always double-check the phone number before paying. The name verification feature helps you confirm the correct owner.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">How long does delivery take? <span class="faq-arrow">▾</span></div>
+                    <div class="faq-a">Delivery is usually instant to 2 minutes. During heavy traffic periods, it may take up to 30 minutes. If you wait longer than that, contact our support team on WhatsApp.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">Is my payment secure? <span class="faq-arrow">▾</span></div>
+                    <div class="faq-a">Yes. All payments are processed by Paystack, a PCI-DSS compliant payment processor. Sci-Fi Data never sees or stores your card or MoMo PIN details.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">Can I buy data for someone else? <span class="faq-arrow">▾</span></div>
+                    <div class="faq-a">Yes! Enter their phone number in the Recipient Number field. The data will be sent directly to that number, not yours.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">How do I check my order status? <span class="faq-arrow">▾</span></div>
+                    <div class="faq-a">Go to the Orders tab and enter your transaction reference (starts with SF-) or the phone number you used. All your past orders will appear with their delivery status.</div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h3>Ready to Buy? 🚀</h3>
+                <p>Fast, automated, and secure. Join thousands of Ghanaians who trust Sci-Fi Data.</p>
+                <a href="index.html" class="cta-btn">🛒 Buy Data Now</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon">🛒</span>
+            <span>Buy Data</span>
+        </a>
+        <a href="orders.html" class="nav-item">
+            <span class="nav-icon">📦</span>
+            <span>Orders</span>
+        </a>
+        <a href="how-it-works.html" class="nav-item active">
+            <span class="nav-icon">📖</span>
+            <span>Guide</span>
+        </a>
+        <a href="https://wa.me/233540753328" target="_blank" class="nav-item">
+            <span class="nav-icon">💬</span>
+            <span>Support</span>
+        </a>
+    </nav>
+
+</div>
+
+<script>
+function toggleFaq(el) {
+    el.classList.toggle('open');
+}
+</script>
+</body>
+</html>

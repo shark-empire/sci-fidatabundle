@@ -1,1078 +1,359 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-
-   <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-    <script>
-        eruda.init();
-    </script>
-
-<meta name="google-site-verification" content="oDzcV6Ibpo5Q54wV2szqfqz9L-232nFg3pJ0kwwV8Q4" />
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sci-Fi Data | Fast, Secure & Cheap MTN, TELECEL and AirtelTigo  Data Bundles</title>
-
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2338BDF8%22/><text y=%221.2em%22 x=%228%22 font-size=%2265%22 font-weight=%22bold%22 font-family=%22Arial%22 fill=%22white%22>SF</text></svg>">
-
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-
-<link rel="icon" sizes="192x192" href="logo-192.png">
-
-<link rel="apple-touch-icon" href="logo-apple.png">
-
-
+    <title>Sci-Fi Data | Buy Data Bundles</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2338BDF8%22/><text y=%221.2em%22 x=%228%22 font-size=%2265%22 font-weight=%22bold%22 font-family=%22Arial%22 fill=%22white%22>SF</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="shared.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
-
-<script src="https://js.paystack.co/v1/inline.js"></script>
-
-  
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<meta property="og:image" content="https://shark-enpire.github.io/sci-fidatabundle/static/img/IMG_0749.png">
-
-<meta property="og:title" content="Sci-Fi Data: Cheap MTN & Vodafone Bundles">
-
-<meta property="og:description" content="Get 1GB for only 5GHC. Fast, automated, and reliable service.">
-
-<meta property="og:url" content="https://shark-empire.github.io/fci-fidatabundle/">
-
-<meta property="og:type" content="website">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://shark-empire.github.io/sci-fidatabundle/static/img/IMG_0749.png">
-
-
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <style>
-
-
-    /* ═══════════════════════════════════════
-       THEME: DARK (default) + LIGHT (device)
-    ═══════════════════════════════════════ */
-    :root {
-        --bg:            #050A14;
-        --surface:       #0D1526;
-        --surface2:      #111E35;
-        --border:        rgba(255,255,255,0.07);
-        --border-accent: rgba(56,189,248,0.3);
-        --accent:        #38BDF8;
-        --accent2:       #0EA5E9;
-        --green:         #22D3A1;
-        --green2:        #10B981;
-        --text:          #F0F6FF;
-        --muted:         #64748B;
-        --muted2:        #94A3B8;
-        --yellow:        #F59E0B;
-        --red:           #EF4444;
-        --radius:        16px;
-        --radius-sm:     10px;
-        --shell-bg:      #0a0f1a;
-        --shell-border:  rgba(255,255,255,0.12);
-        --shell-btn:     #1a1a1a;
-        --header-bg:     rgba(5,10,20,0.85);
-        --card-bg:       rgba(13,21,38,0.85);
-        --input-bg:      rgba(0,0,0,0.3);
-    --mtn-color: #FFCC00;
-    --vodafone-color: #EF4444;
-    --at-color: #38BDF8;
-
-    }
-
-    @media (prefers-color-scheme: light) {
-        :root {
-            --bg:            #F0F5FF;
-            --surface:       #FFFFFF;
-            --surface2:      #EBF1FB;
-            --border:        rgba(0,0,0,0.08);
-            --border-accent: rgba(14,165,233,0.35);
-            --accent:        #0EA5E9;
-            --accent2:       #0284C7;
-            --green:         #059669;
-            --green2:        #047857;
-            --text:          #0F172A;
-            --muted:         #94A3B8;
-            --muted2:        #475569;
-            --yellow:        #D97706;
-            --red:           #DC2626;
-            --shell-bg:      #E2E8F0;
-            --shell-border:  rgba(0,0,0,0.15);
-            --shell-btn:     #CBD5E1;
-            --header-bg:     rgba(240,245,255,0.92);
-            --card-bg:       rgba(255,255,255,0.95);
-            --input-bg:      rgba(0,0,0,0.04);
+        /* ── PAGE-SPECIFIC STYLES ── */
+        .hero {
+            text-align: center;
+            padding: 28px 20px 20px;
+            animation: fadeUp 0.5s ease both;
         }
-    }
-
-    /* ═══════════════════════════════════════
-       RESET & BASE
-    ═══════════════════════════════════════ */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-        font-family: 'DM Sans', sans-serif;
-        color: var(--text);
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #0d0d0d;
-        position: relative;
-    }
-    @media (prefers-color-scheme: light) {
-        body { background: #C0CFE4; }
-    }
-
-    body::before {
-        content: '';
-        position: fixed; inset: 0; z-index: 0;
-        background:
-            radial-gradient(ellipse 80% 60% at 50% 0%,  rgba(56,189,248,0.07)  0%, transparent 70%),
-            radial-gradient(ellipse 60% 40% at 80% 100%, rgba(34,211,161,0.05) 0%, transparent 60%),
-            linear-gradient(160deg, #040810 0%, #000 60%);
-    }
-    @media (prefers-color-scheme: light) {
-        body::before {
-            background:
-                radial-gradient(ellipse 80% 60% at 50% 0%,  rgba(14,165,233,0.1) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(5,150,105,0.07) 0%, transparent 60%),
-                linear-gradient(160deg, #BFCFE4 0%, #C0CFE4 60%);
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.7rem; font-weight: 800;
+            line-height: 1.1; letter-spacing: -0.02em;
+            margin-bottom: 10px;
         }
-    }
+        .hero h1 .highlight {
+            color: #38BDF8;
+            background-image: linear-gradient(135deg, #38BDF8, #22D3A1);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        .hero p { color: var(--muted2); font-size: 0.82rem; max-width: 260px; margin: 0 auto; line-height: 1.6; }
+        .trust-bar { display: flex; justify-content: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+        .trust-item {
+            display: flex; align-items: center; gap: 4px;
+            font-size: 0.67rem; color: var(--muted);
+            background: rgba(255,255,255,0.03);
+            padding: 4px 10px; border-radius: 20px;
+            border: 1px solid var(--border);
+        }
 
-    /* ═══════════════════════════════════════
-       PHONE SHELL
-       KEY FIX: height (not min-height) so the
-       flex children are truly constrained and
-       only .screen scrolls internally.
-    ═══════════════════════════════════════ */
-    .phone-shell {
-        position: relative;
-        z-index: 1;
-        width:  100%;
-        min-height: 100dvh;
-        background: var(--shell-bg);
-        border-radius: 0;
-        border: 2px solid var(--shell-border);
-        box-shadow:
-            0 0 0 1px  rgba(0,0,0,0.5),
-            0 0 0 10px var(--shell-btn),
-            0 0 0 11px rgba(0,0,0,0.12),
-            0 60px 120px rgba(0,0,0,0.55),
-            0 20px 40px  rgba(0,0,0,0.35),
-            inset 0 0 0 1px rgba(255,255,255,0.05);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-    }
+        .network-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+        .network-card {
+            padding: 12px 10px; border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            background: var(--input-bg);
+            cursor: pointer; text-align: center;
+            transition: all 0.2s;
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+        }
+        .network-card .net-emoji i { color: var(--accent); font-size: 1.3rem; }
+        .network-card .net-name { font-size: 0.72rem; font-weight: 600; color: var(--muted2); }
 
-    /* decorative side buttons */
-    .phone-shell::before {
-        content: '';
-        position: absolute; left: -13px; top: 130px;
-        width: 4px; height: 36px;
-        background: var(--shell-btn);
-        border-radius: 2px 0 0 2px;
-        box-shadow: 0 50px 0 var(--shell-btn), 0 96px 0 var(--shell-btn);
-    }
-    .phone-shell::after {
-        content: '';
-        position: absolute; right: -13px; top: 180px;
-        width: 4px; height: 70px;
-        background: var(--shell-btn);
-        border-radius: 0 2px 2px 0;
-    }
+        .network-card[data-network="MTN"]                          { background: rgba(245,158,11,0.07); border-color: rgba(245,158,11,0.2); }
+        .network-card[data-network="MTN"].selected                 { background: rgba(245,158,11,0.13); border-color: var(--yellow); box-shadow: 0 0 0 2px rgba(245,158,11,0.2); }
+        .network-card[data-network="MTN"].selected .net-name       { color: var(--yellow); }
+        .network-card[data-network="Vodafone"]                     { background: rgba(239,68,68,0.07); border-color: rgba(239,68,68,0.2); }
+        .network-card[data-network="Vodafone"].selected            { background: rgba(239,68,68,0.13); border-color: var(--red); box-shadow: 0 0 0 2px rgba(239,68,68,0.2); }
+        .network-card[data-network="Vodafone"].selected .net-name  { color: var(--red); }
+        .network-card[data-network="AirtelTigo"]                   { background: rgba(56,189,248,0.07); border-color: rgba(56,189,248,0.2); }
+        .network-card[data-network="AirtelTigo"].selected          { background: rgba(56,189,248,0.13); border-color: var(--accent); box-shadow: 0 0 0 2px rgba(56,189,248,0.2); }
+        .network-card[data-network="AirtelTigo"].selected .net-name{ color: var(--accent); }
 
-    /* ═══════════════════════════════════════
-       HEADER  —  flex-shrink:0 = never scrolls
-    ═══════════════════════════════════════ */
-    .app-header {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 20px;
-        background: var(--header-bg);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border-bottom: 1px solid var(--border);
-        z-index: 30;
-       animation: fadeUp 0.5s 0.1s ease both;
-        position: relative; overflow: hidden;
-       overflow: visible;      /* ← change from hidden to visible */
-    z-index: 100;
-    }
+        .bundle-selector {
+            width: 100%; padding: 12px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            background: var(--input-bg);
+            color: var(--text);
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; transition: all 0.3s ease;
+        }
+        .bundle-selector.MTN       { border-color: var(--yellow); background: rgba(245,158,11,0.05); }
+        .bundle-selector.Vodafone  { border-color: var(--red);    background: rgba(239,68,68,0.05); }
+        .bundle-selector.AirtelTigo{ border-color: var(--accent); background: rgba(56,189,248,0.05); }
 
-    .logo-group { display: flex; align-items: center; gap: 10px; }
-    .logo-img {
-        width: 100px; height: 100px;
-        border-radius: 50%; object-fit: cover;
-        border: 1.5px solid var(--border-accent);
-        box-shadow: 0 0 12px rgba(56,189,248,0.2);
-    }
+        .phone-input-wrap {
+            display: flex; border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            overflow: hidden; background: var(--input-bg);
+            transition: all 0.25s;
+        }
+        .phone-input-wrap:focus-within {
+            border-color: var(--accent);
+            background: rgba(56,189,248,0.04);
+            box-shadow: 0 0 0 3px rgba(56,189,248,0.08);
+        }
+        .phone-prefix {
+            display: flex; align-items: center; gap: 6px;
+            padding: 12px 12px 12px 14px;
+            border-right: 1px solid var(--border);
+            font-size: 0.8rem; font-weight: 600;
+            color: var(--muted2); white-space: nowrap;
+        }
+        .phone-input-wrap input { border: none; background: transparent; border-radius: 0; box-shadow: none; flex: 1; }
+        .phone-input-wrap input:focus { box-shadow: none; background: transparent; border: none; }
 
-.logo-text strong {
-    display: block;
+        .price-display {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 14px;
+            background: rgba(34,211,161,0.06);
+            border: 1px solid rgba(34,211,161,0.15);
+            border-radius: var(--radius-sm);
+            margin-bottom: 14px;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .price-display.visible { opacity: 1; }
+        .price-label { font-size: 0.75rem; color: var(--muted2); }
+        .price-amount { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--green); }
+
+        .checkout-group {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            padding: 20px 18px;
+            margin: 0 16px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+            animation: fadeUp 0.5s 0.15s ease both;
+            position: relative;
+        }
+
+        /* Bundle Modal */
+        .bundle-item {
+            background-color: #10B981; color: #fff;
+            padding: 16px 20px; margin-bottom: 12px;
+            border-radius: 16px;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; transition: transform 0.2s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .bundle-item.MTN       { background: #FFCC00; color: #000; }
+        .bundle-item.Vodafone  { background: #EF4444; color: #fff; }
+        .bundle-item.AirtelTigo{ background: #38BDF8; color: #fff; }
+        .bundle-item:hover { transform: scale(0.98); }
+        .bundle-item small { display: block; margin-top: 2px; font-size: 0.78rem; opacity: 0.8; }
+        .modal-box.MTN       { border-top: 4px solid #FFCC00; }
+        .modal-box.Vodafone  { border-top: 4px solid #EF4444; }
+        .modal-box.AirtelTigo{ border-top: 4px solid #38BDF8; }
+        .select-btn {
+            background: rgba(0,0,0,0.15); color: inherit;
+            border: none; padding: 6px 12px;
+            border-radius: 20px; font-weight: 600; font-size: 0.75rem; cursor: pointer;
+        }
+
+.screen-content {
+    padding-bottom: 100px; /* height of bottom nav + some space */
+}
+
+.footer {
+    margin-top: 40px;
+    padding: 24px 20px 100px; /* leaves room for bottom nav */
+    text-align: center;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.04)
+    );
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+}
+
+.footer-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
     font-family: 'Syne', sans-serif;
-    font-weight: 800; 
-    font-size: 0.95rem;
-    
-    /* 1. Set a solid fallback color first */
-    color: #38BDF8; 
-    
-    /* 2. Apply the gradient */
-    background-image: linear-gradient(90deg, #38BDF8, #22D3A1);
-    
-    /* 3. Clip it */
-    -webkit-background-clip: text;
-    background-clip: text;
-    
-    /* 4. Only then set fill to transparent */
-    -webkit-text-fill-color: transparent;
-}
-
-
-
-    .logo-text span { font-size: 0.62rem; color: var(--muted); }
-
-    .header-right { display: flex; align-items: center; gap: 8px; }
-
-    .status-pill {
-        display: flex; align-items: center; gap: 5px;
-        padding: 3px 8px;
-        background: rgba(34,211,161,0.08);
-        border: 1px solid rgba(34,211,161,0.2);
-        border-radius: 20px;
-        font-size: 0.62rem; font-weight: 600;
-        color: var(--green);
-    }
-
-.status-dot {
-    width: 6px; 
-    height: 6px; 
-    border-radius: 50%;
-    background-color: var(--green); /* Ensure this is #22D3A1 */
-    flex-shrink: 0; /* Prevents the dot from squishing */
-    display: block;
-    box-shadow: 0 0 8px var(--green);
-    animation: pulse-dot 1.5s infinite;
-}
-
-@keyframes pulse-dot {
-    0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(34, 211, 161, 0.7);
-    }
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 6px rgba(34, 211, 161, 0);
-    }
-    100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(34, 211, 161, 0);
-    }
-}
-
-
-.menu-btn {
-    width: 34px; 
-    height: 34px; 
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.2);
-    display: flex; 
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center;
-    gap: 4px;
-    cursor: pointer;
-    background-color: #20b2aa; 
-    transition: all 0.3s ease; /* Adds a smooth color flip */
-}
-
-.menu-btn span {
-    width: 18px; 
-    height: 2px;
-    /* Use a color that is white by default but can change */
-    background-color: #FFFFFF; 
-    border-radius: 10px;
-    display: block;
-}
-
-@media (prefers-color-scheme: light) {
-    .menu-btn {
-        /* Makes the button match your light theme accent */
-        background-color: var(--accent);
-        border: 1px solid rgba(0,0,0,0.1);
-    }
-    
-    /* Ensure the lines stay visible if the accent is too light */
-    .menu-btn span {
-        background-color: #FFFFFF; 
-        /* Or change to var(--bg) if you want dark lines on light button */
-    }
-}
-
-.menu-btn:active {
-    transform: scale(0.92);
-    opacity: 0.8;
-}
-
-
-    .dropdown { position: relative; }
-  .dropdown-content {
-    position: absolute; right: 0; top: calc(100% + 6px);
-    background: var(--surface);
-    border-radius: var(--radius-sm);
-    display: none; min-width: 180px;
-    border: 1px solid var(--border);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-    overflow: visible;      /* ← change from hidden to visible */
-    z-index: 9999;          /* ← increase z-index, something is overlapping */
-}
-
-    .dropdown-content a {
-        display: flex; align-items: center; gap: 8px;
-        padding: 11px 14px;
-        color: var(--muted2); text-decoration: none;
-        font-size: 0.8rem;
-        border-bottom: 1px solid var(--border);
-        transition: all 0.2s;
-    }
-    .dropdown-content a:last-child { border-bottom: none; }
-    .dropdown-content a:hover { color: var(--text); background: var(--surface2); }
-    .show { display: block !important; }
-
-    /* ═══════════════════════════════════════
-       SCREEN  —  flex:1 + overflow-y = scrolls
-    ═══════════════════════════════════════ */
-    .screen {
-        flex: 1;
-        overflow-y: auto;
-        overflow-x: hidden;
-        position: relative;
-        background: var(--bg);
-        scrollbar-width: none;
-    }
-    .screen::-webkit-scrollbar { display: none; }
-
-    .screen-bg {
-        position: absolute; inset: 0;
-        z-index: 0; pointer-events: none;
-    }
-    .bg-grid {
-        position: absolute; inset: 0;
-        background-image:
-            linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
-        background-size: 40px 40px;
-        animation: drift 30s linear infinite;
-    }
-    @media (prefers-color-scheme: light) {
-        .bg-grid {
-            background-image:
-                linear-gradient(rgba(14,165,233,0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(14,165,233,0.06) 1px, transparent 1px);
-        }
-    }
-    @keyframes drift { to { background-position: 40px 40px; } }
-
-    .bg-orb1 {
-        position: absolute; width: 300px; height: 300px;
-        top: -80px; right: -60px; border-radius: 50%;
-        background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%);
-        filter: blur(50px);
-        animation: float1 12s ease-in-out infinite;
-    }
-    .bg-orb2 {
-        position: absolute; width: 250px; height: 250px;
-        bottom: 200px; left: -60px; border-radius: 50%;
-        background: radial-gradient(circle, rgba(34,211,161,0.1), transparent 70%);
-        filter: blur(50px);
-        animation: float2 15s ease-in-out infinite;
-    }
-    @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,20px)} }
-    @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(15px,-15px)} }
-
-    .screen-content {
-        position: relative; z-index: 1;
-        padding-bottom: 28px;
-    }
-
-    /* ═══════════════════════════════════════
-       HERO
-    ═══════════════════════════════════════ */
-    .hero {
-        text-align: center;
-        padding: 28px 20px 20px;
-        animation: fadeUp 0.5s ease both;
-    }
-    @keyframes fadeUp {
-        from { opacity:0; transform:translateY(16px); }
-        to   { opacity:1; transform:translateY(0); }
-    }
-    .hero-badge {
-        display: inline-flex; align-items: center; gap: 5px;
-        padding: 4px 12px;
-        background: rgba(56,189,248,0.08);
-        border: 1px solid rgba(56,189,248,0.2);
-        border-radius: 20px;
-        font-size: 0.67rem; font-weight: 600;
-        color: var(--accent);
-        letter-spacing: 0.06em; text-transform: uppercase;
-        margin-bottom: 14px;
-    }
-    .hero h1 {
-        font-family: 'Syne', sans-serif;
-        font-size: 1.7rem; font-weight: 800;
-        line-height: 1.1; letter-spacing: -0.02em;
-        margin-bottom: 10px;
-    }
-
-.hero h1 .highlight {
-    /* 1. Set a solid fallback color first */
-    color: #38BDF8; 
-    
-    /* 2. Apply the gradient */
-    background-image: linear-gradient(135deg, #38BDF8, #22D3A1);
-    
-    /* 3. Clip it */
-    -webkit-background-clip: text;
-    background-clip: text;
-    
-    /* 4. Only then set fill to transparent */
-    -webkit-text-fill-color: transparent;
-    
-    /* Extra: Ensure it's inline-block to handle the clip better */
-    display: inline-block;
-}
-
-    .hero p {
-        color: var(--muted2); font-size: 0.82rem;
-        max-width: 260px; margin: 0 auto; line-height: 1.6;
-    }
-    .trust-bar {
-        display: flex; justify-content: center;
-        gap: 10px; margin-top: 16px; flex-wrap: wrap;
-    }
-    .trust-item {
-        display: flex; align-items: center; gap: 4px;
-        font-size: 0.67rem; color: var(--muted);
-        background: rgba(255,255,255,0.03);
-        padding: 4px 10px; border-radius: 20px;
-        border: 1px solid var(--border);
-    }
-
-    /* ═══════════════════════════════════════
-       MAIN CARD
-    ═══════════════════════════════════════ */
-    .card {
-        background: var(--card-bg);
-        backdrop-filter: blur(20px);
-        padding: 20px 18px;
-        margin: 0 16px 16px;
-        border-radius: 20px;
-        border: 1px solid var(--border);
-        box-shadow: 0 16px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
-        animation: fadeUp 0.5s 0.1s ease both;
-        position: relative; overflow: hidden;
-    }
-    .card::before {
-        content: '';
-        position: absolute; top: 0; left: 0; right: 0; height: 1px;
-        background: linear-gradient(90deg, transparent, var(--accent), transparent);
-        opacity: 0.5;
-    }
-
-.card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        border-color: var(--border-accent);
-    }
-
-    .card-title {
-        font-family: 'Syne', sans-serif;
-        font-weight: 700; font-size: 0.88rem;
-        margin-bottom: 16px; color: var(--text);
-        display: flex; align-items: center; gap: 7px;
-    }
-    .field-group { margin-bottom: 14px; }
-    .field-label {
-        font-size: 0.67rem; font-weight: 700;
-        color: var(--muted2);
-        text-transform: uppercase; letter-spacing: 0.08em;
-        margin-bottom: 7px;
-        display: flex; align-items: center; gap: 5px;
-    }
-
-    .network-grid {
-        display: grid; grid-template-columns: 1fr 1fr;
-        gap: 8px; margin-bottom: 14px;
-    }
-
-
-    .network-card {
-        padding: 12px 10px;
-        border-radius: var(--radius-sm);
-        border: 1px solid var(--border);
-        background: var(--input-bg);
-        cursor: pointer; text-align: center;
-        transition: all 0.2s;
-        display: flex; flex-direction: column;
-        align-items: center; gap: 5px;
-    }
-    .network-card .net-emoji { font-size: 1.2rem; }
-    .network-card .net-name  { font-size: 0.72rem; font-weight: 600; color: var(--muted2); }
-
-    .network-card[data-network="MTN"]                  { background: rgba(245,158,11,0.07); border-color: rgba(245,158,11,0.2); }
-    .network-card[data-network="MTN"].selected         { background: rgba(245,158,11,0.13); border-color: var(--yellow); box-shadow: 0 0 0 2px rgba(245,158,11,0.2); }
-    .network-card[data-network="MTN"].selected .net-name { color: var(--yellow); }
-
-    .network-card[data-network="Vodafone"]                  { background: rgba(239,68,68,0.07); border-color: rgba(239,68,68,0.2); }
-    .network-card[data-network="Vodafone"].selected         { background: rgba(239,68,68,0.13); border-color: var(--red); box-shadow: 0 0 0 2px rgba(239,68,68,0.2); }
-    .network-card[data-network="Vodafone"].selected .net-name { color: var(--red); }
-
-    select, input[type="tel"] {
-        width: 100%; padding: 12px 14px;
-        border-radius: var(--radius-sm);
-        border: 1px solid var(--border);
-        background: var(--input-bg);
-        color: var(--text); outline: none;
-        font-size: 15px; font-family: 'DM Sans', sans-serif;
-        transition: all 0.25s;
-        -webkit-appearance: none; appearance: none;
-    }
-    select {
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 14px center;
-        background-color: var(--input-bg);
-        padding-right: 36px; cursor: pointer;
-    }
-    select option { background: #0D1526; color: var(--text); }
-    select:focus, input:focus {
-        border-color: var(--accent);
-        background: rgba(56,189,248,0.04);
-        box-shadow: 0 0 0 3px rgba(56,189,248,0.08);
-    }
-    input::placeholder { color: var(--muted); }
-
-.network-card[data-network="AirtelTigo"] { 
-    background: rgba(56, 189, 248, 0.07); 
-    border-color: rgba(56, 189, 248, 0.2); 
-}
-.network-card[data-network="AirtelTigo"].selected { 
-    background: rgba(56, 189, 248, 0.13); 
-    border-color: var(--accent); 
-    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2); 
-}
-.network-card[data-network="AirtelTigo"].selected .net-name { 
-    color: var(--accent); 
-}
-
-
-    .phone-input-wrap {
-        display: flex;
-        border-radius: var(--radius-sm);
-        border: 1px solid var(--border);
-        overflow: hidden;
-        background: var(--input-bg);
-        transition: all 0.25s;
-    }
-    .phone-input-wrap:focus-within {
-        border-color: var(--accent);
-        background: rgba(56,189,248,0.04);
-        box-shadow: 0 0 0 3px rgba(56,189,248,0.08);
-    }
-    .phone-prefix {
-        display: flex; align-items: center; gap: 6px;
-        padding: 12px 12px 12px 14px;
-        border-right: 1px solid var(--border);
-        font-size: 0.8rem; font-weight: 600;
-        color: var(--muted2); white-space: nowrap;
-    }
-    .phone-input-wrap input {
-        border: none; background: transparent;
-        border-radius: 0; box-shadow: none; flex: 1;
-    }
-    .phone-input-wrap input:focus { box-shadow: none; background: transparent; border: none; }
-
-    .price-display {
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 12px 14px;
-        background: rgba(34,211,161,0.06);
-        border: 1px solid rgba(34,211,161,0.15);
-        border-radius: var(--radius-sm);
-        margin-bottom: 14px;
-        opacity: 0; transition: opacity 0.3s;
-    }
-    .price-display.visible { opacity: 1; }
-    .price-label { font-size: 0.75rem; color: var(--muted2); }
-    .price-amount {
-        font-family: 'Syne', sans-serif;
-        font-size: 1.25rem; font-weight: 800;
-        color: var(--green);
-    }
-
-    .main-btn {
-        width: 100%; padding: 14px;
-       background: linear-gradient(135deg, #20b2aa, #10B981);
-        border: none; border-radius: var(--radius-sm);
-        font-weight: 700; font-family: 'Syne', sans-serif;
-        font-size: 0.9rem; letter-spacing: 0.02em;
-        color: white; cursor: pointer;
-        transition: all 0.25s;
-        position: relative; overflow: hidden;
-        display: flex; align-items: center; justify-content: center; gap: 7px;
-  
-    }
-    .main-btn::before {
-        content: '';
-        position: absolute; inset: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-    }
-    .main-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(34,211,161,0.4); }
-    .main-btn:active:not(:disabled) { transform: translateY(0); }
-    .main-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-
-    .spinner {
-        width: 14px; height: 14px;
-        border: 2px solid rgba(255,255,255,0.3);
-        border-top-color: white; border-radius: 50%;
-        animation: spin 0.7s linear infinite;
-        display: none;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ═══════════════════════════════════════
-       ACTION CARDS
-    ═══════════════════════════════════════ */
-    .actions {
-        display: grid; grid-template-columns: 1fr 1fr;
-        gap: 10px; margin: 0 16px 20px;
-        animation: fadeUp 0.5s 0.2s ease both;
-    }
-    .action-card {
-        padding: 14px; border-radius: 14px;
-        border: 1px solid var(--border);
-        background: var(--surface);
-        cursor: pointer; text-decoration: none;
-        display: flex; align-items: center; gap: 10px;
-        transition: all 0.25s; color: var(--text);
-    }
-    .action-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        border-color: var(--border-accent);
-    }
-    .action-icon {
-        width: 36px; height: 36px; border-radius: 9px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 1.1rem; flex-shrink: 0;
-    }
-    .action-icon.yt   { background: rgba(239,68,68,0.15); }
-    .action-icon.growth{ background: rgba(245,158,11,0.15); }
-    .action-info strong { display: block; font-size: 0.75rem; font-weight: 600; margin-bottom: 1px; }
-    .action-info span   { font-size: 0.65rem; color: var(--muted); }
-
-    /* ═══════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════ */
-    footer { text-align: center; padding: 4px 20px 12px; }
-    .footer-links { display: flex; justify-content: center; gap: 16px; margin-bottom: 8px; }
-    .footer-links a { font-size: 0.7rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-copy { font-size: 0.62rem; color: #334155; }
-
- 
-
-    /* ═══════════════════════════════════════
-       MODAL (bottom sheet)
-    ═══════════════════════════════════════ */
-
-/* Ensure the modal container is a flexbox that aligns to the bottom */
-.modal {
-    display: none; 
-    position: fixed; inset: 0; z-index: 500;
-    background: rgba(0,0,0,0.5); /* Dim background */
-     align-items: flex-end;
-    padding-bottom: env(safe-area-inset-bottom); /* handles iPhone home bar */
-    justify-content: center;
-    inset: 0;
-    top: -100px;            /* overshoot upward */
-    padding-top: 100px;     /* compensate so content stays in place */
-}
-
-.modal.open { display: flex; }
-
-/* Style the modal to slide up and cover the screen */
-.modal-box {
-    background: #ffffff; /* White background for the card */
-    width: 100%; max-width: 500px;
-     height: 90vh;           /* fallback */
-    height: 90dvh;          /* dynamic — accounts for browser chrome */
-    max-height: 90dvh;
-    border-radius: 24px 24px 0 0;
-    display: flex; flex-direction: column;
-    overflow: hidden;
-}
-
-.modal-body {
-    flex: 1;
-    overflow-y: auto; /* This makes the list scrollable */
-    padding: 16px;
-}
-
-/* Ensure the Modal looks like the one in image.png */
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-}
-
-.close-btn {
-    background: #f1f5f9;        /* light grey pill */
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    font-size: 1rem;
-    cursor: pointer;
-    color: #0F172A;             /* dark × symbol */
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-weight: 700;
+    font-size: 1rem;
+
+    background: linear-gradient(
+        135deg,
+        #38BDF8,
+        #22D3A1
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
 }
 
-
-.bundle-selector {
-    width: 100%; padding: 12px 14px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--input-bg);
-    color: var(--text);
-    display: flex; justify-content: space-between; align-items: center;
-    cursor: pointer;
-      transition: all 0.3s ease; /* Add this for smooth color shifting */
+.footer-logo {
+    -webkit-text-fill-color: initial;
+    color: #22D3A1;
 }
 
-/* Define helper classes for the color themes */
-.bundle-selector.MTN { border-color: var(--yellow); background: rgba(245,158,11,0.05); }
-.bundle-selector.Vodafone { border-color: var(--red); background: rgba(239,68,68,0.05); }
-.bundle-selector.AirtelTigo { border-color: var(--accent); background: rgba(56,189,248,0.05); }
-
-
-.bundle-option {
-    padding: 15px; border-bottom: 1px solid var(--border);
-    cursor: pointer;
-}
-.bundle-option:hover { background: var(--surface2); }
-
-/* 1. Base style: Remove background from here */
-.bundle-item {
-   background-color: #10B981;
-    color: #fff;
-    padding: 16px 20px;
-    margin: 0 16px 12px 16px;
-    border-radius: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.2s;
-    border: 1px solid rgba(255,255,255,0.1); /* Optional: cleaner look */
-}
-
-/* 2. Specific Network Overrides */
-.bundle-item.MTN { background: #FFCC00; color: #000; }
-.bundle-item.Vodafone { background: #EF4444; color: #fff; }
-.bundle-item.AirtelTigo { background: #38BDF8; color: #fff; }
-
-/* 3. Ensure the Modal box itself adapts if you want a full-sheet theme */
-.modal-box.MTN { border-top: 5px solid #FFCC00; }
-.modal-box.Vodafone { border-top: 5px solid #EF4444; }
-.modal-box.AirtelTigo { border-top: 5px solid #38BDF8; }
-
-/* Ensure the Select button looks distinct */
-.select-btn {
-    background: rgba(0,0,0,0.15);
-    color: inherit; /* Inherits the black/white from the parent */
-    border: none;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-weight: 600;
+.footer-text {
     font-size: 0.75rem;
-    cursor: pointer;
+    color: var(--muted2);
+    margin-bottom: 6px;
+}
+
+.footer-company {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 
 
 
-.bundle-item:hover {
-    transform: scale(0.98);
-}
-
-
-
-    /* ═══════════════════════════════════════
-       TOAST
-    ═══════════════════════════════════════ */
-    .toast {
-        position: fixed; bottom: 80px; left: 50%;
-        transform: translateX(-50%) translateY(60px);
-        background: var(--surface2);
-        border: 1px solid var(--border);
-        border-radius: 10px; padding: 10px 16px;
-        font-size: 0.78rem; color: var(--text);
-        z-index: 999;
-        display: flex; align-items: center; gap: 6px;
-        transition: transform 0.3s ease;
-        box-shadow: 0 6px 24px rgba(0,0,0,0.4);
-        white-space: nowrap; max-width: 330px;
-    }
-    .toast.show { transform: translateX(-50%) translateY(0); }
-    .toast.error   { border-color: rgba(239,68,68,0.35); }
-    .toast.success { border-color: rgba(34,211,161,0.35); }
-
-    /* ═══════════════════════════════════════
-       RESPONSIVE — real phones fill viewport
-    ═══════════════════════════════════════ */
-    @media (max-width: 430px) {
-        body { align-items: flex-start; background: var(--bg); }
-        body::before { display: none; }
-        .phone-shell {
-            width: 100vw;
-            height: 100vh;
-            border-radius: 0;
-            border: none;
-            box-shadow: none;
-        }
-        .phone-shell::before,
-        .phone-shell::after { display: none; }
-        .toast { bottom: 24px; }
-    }
-
-.net-emoji i {
-    color: var(--accent); /* This makes the icons match your blue theme */
-    font-size: 1.4rem;
-}
-
-
-
-
-
-
-
-
-
-/* Container for the checkout elements */
-.checkout-group {
-    border: 1px solid var(--border);
-    margin-top: 10px;
-        background: var(--card-bg);
-        backdrop-filter: blur(20px);
-        padding: 20px 18px;
-        margin: 0 16px 16px;
-        border-radius: 20px;
-        border: 1px solid var(--border);
-        box-shadow: 0 16px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
-        animation: fadeUp 0.5s 0.1s ease both;
-        position: relative; overflow: hidden;
-    }
-
-.checkout-group:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        border-color: var(--border-accent);
-    }
-
-
-/* Ensure the button looks consistent within the group */
-.main-btn {
-    margin-top: 10px;
-    box-shadow: 0 4px 12px rgba(34, 211, 161, 0.2);
-}
-
-/* Enhancing the input focus for a polished feel */
-.phone-input-wrap {
-    border: 1px solid var(--border);
-    background: var(--input-bg);
-}
-
-/* Refined price display to match the card theme */
-.price-display {
-    margin: 16px 0;
-    padding: 10px 12px;
-    border-radius: 8px;
-    background: rgba(34, 211, 161, 0.1);
-}
-
-.main-btn:disabled {
-    background: #475569 !important; /* Visual change to indicate "waiting" */
-    cursor: wait;
-    opacity: 0.7;
-}
-
-
-
-</style>
-
-
+    </style>
 </head>
 <body>
-
-<!-- ══════════════════════════════════════════════
-     PHONE SHELL
-     Layout: [① header pinned] [② screen scrolls] [③ home bar pinned]
-═══════════════════════════════════════════════ -->
-
 <div class="phone-shell">
 
-
-<!-- ① HEADER — flex-shrink:0, never moves -->
-<header class="app-header">
-    <div class="logo-group">
-        <img src="https://i.imgur.com/wKOG6wP.png" alt="Sci-Fi" class="logo-img">
-        <div class="logo-text">
-            <strong> Sci-Fi Data</strong><br>
-            <span>Official Platform</span>
-        </div>
-    </div>
-    <div class="header-right">
-        <div class="status-pill">
-            <div class="status-dot"></div>
-            Live
-        </div>
-        <div class="dropdown">
-            <div class="menu-btn" id="menuBtn">
-                <span></span><span></span><span></span>
+    <!-- HEADER -->
+    <header class="app-header">
+        <a href="index.html" class="logo-group" style="text-decoration:none;">
+            <img src="https://i.imgur.com/wKOG6wP.png" alt="Sci-Fi" class="logo-img">
+            <div class="logo-text">
+                <strong>Sci-Fi Data</strong>
+                <span>Official Platform</span>
             </div>
-            <div id="menu" class="dropdown-content">
-                <a href="https://wa.me/233540753328" target="_blank"><span>💬</span> Contact Support</a>
-                <a href="#" id="termsLink"><span>📋</span> Terms & Conditions</a>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!-- ② SCREEN — only this div scrolls -->
-<div class="screen">
-    <div class="screen-bg">
-        <div class="bg-grid"></div>
-        <div class="bg-orb1"></div>
-        <div class="bg-orb2"></div>
-    </div>
-
-    <div class="screen-content">
-
-        <!-- HERO -->
-        <section class="hero">
-            <div class="hero-badge">⚡ Instant Delivery</div>
-            <h1>Buy Data<br><span class="highlight">Instantly & Securely</span></h1>
-            <p>Top up your mobile data in seconds. Fast, secure, and reliable.</p>
-            <div class="trust-bar">
-                <div class="trust-item">🔒 Secured</div>
-                <div class="trust-item">⚡ Instant</div>
-                <div class="trust-item">🇬🇭 Ghana</div>
-            </div>
-        </section>
-
-        <!-- PURCHASE CARD -->
-        <div class="card">
-            <div class="card-title"><span> <i class="fas fa-satellite-dish"></i> </span> Purchase Data Bundle</div>
-
-
-<div class="network-grid">
-    <div class="network-card" data-network="MTN" onclick="selectNetwork('MTN', this)">
-        <div class="net-emoji"> <i class="fas fa-signal"></i> </div>
-        <div class="net-name">MTN Ghana</div>
-    </div>
-    <div class="network-card" data-network="Vodafone" onclick="selectNetwork('Vodafone', this)">
-        <div class="net-emoji"> <i class="fas fa-tower-broadcast"></i> </div>
-        <div class="net-name">Telecel</div> </div>
-    <div class="network-card" data-network="AirtelTigo" onclick="selectNetwork('AirtelTigo', this)">
-        <div class="net-emoji"> <i class="fas fa-mobile-screen-button"></i> </div>
-        <div class="net-name">AT (AirtelTigo)</div>
-    </div>
-</div>
-
-
-           
-<div class="field-group">
-    <div class="field-label">📦 Data Bundle</div>
-    <!-- This replaces your <select> -->
-    <div id="bundleTrigger" class="bundle-selector" onclick="openBundleModal()">
-        <span id="selectedBundleText">Choose a bundle...</span>
-        <i class="fas fa-chevron-down"></i>
-    </div>
-</div>
-
-
-            </div>
-
-
-
-  
-<!-- New Grouped Container -->
-<div class="checkout-group">
-
-   <input type="hidden" id="bundle" name="bundle">
-
-    <div class="field-group">
-        <div class="field-label">📱 Recipient Number</div>
-        <div class="phone-input-wrap">
-            <div class="phone-prefix">
-                <span class="flag"><img src="https://flagcdn.com/w20/gh.png" alt="GH" style="width: 20px; border-radius: 2px;"></span>
-                <span>+233</span>
-            </div>
-            <input type="tel" id="phone" placeholder="054 000 0000" maxlength="10">
-        </div>
-        <div id="nameVerification" style="font-size: 0.75rem; font-weight: 600; margin-top: 6px; padding: 2px 4px; display: none;"></div>
-    </div>
-
-    <div class="price-display" id="priceDisplay">
-        <span class="price-label">Total to Pay</span>
-        <span class="price-amount" id="priceAmount">GH₵ 0.00</span>
-    </div>
-
-    <button id="buyBtn" class="main-btn" onclick="buyData()">
-        <div class="spinner" id="spinner"></div>
-        <span id="btnText">🛒 Buy Now</span>
-    </button>
-</div>
-
-        </div>
-
-        <!-- ACTION CARDS -->
-        <div class="actions">
-            <a href="https://youtube.com/@scifinetworkempire?sub_confirmation=1" target="_blank" class="action-card">
-                <div class="action-icon yt">▶️</div>
-                <div class="action-info">
-                    <strong>YouTube</strong>
-                    <span>Watch [How To Buy] & Subscribe</span>
+        </a>
+        <div class="header-right">
+            <div class="status-pill"><div class="status-dot"></div>Live</div>
+            <div class="dropdown">
+                <div class="menu-btn" id="menuBtn"><span></span><span></span><span></span></div>
+                <div id="menu" class="dropdown-content">
+                    <a href="https://wa.me/233540753328" target="_blank"><span>💬</span> Contact Support</a>
+                    <a href="how-it-works.html"><span>📖</span> How It Works</a>
+                    <a href="#" id="termsLink"><span>📋</span> Terms & Conditions</a>
                 </div>
-            </a>
-            <div class="action-card" onclick="showToast('Join The Channel for More Updates soon!')">
-       <a href="https://chat.whatsapp.com/EF1HL1EzwCHFexy0tGEOpb?s=cl&p=i&mlu=1" class="action-card" target="_blank" rel="noopener noreferrer">
-    <div class="action-icon growth">🚾</div>
-    <div class="action-info">
-        <strong>WhatsApp Community</strong>
-        <span>Follow The WhatsApp Channel for more updates </span>
-    </div>
-</a>
             </div>
         </div>
+    </header>
+
+    <!-- SCREEN -->
+    <div class="screen">
+        <div class="screen-bg">
+            <div class="bg-grid"></div>
+            <div class="bg-orb1"></div>
+            <div class="bg-orb2"></div>
+        </div>
+        <div class="screen-content">
+
+            <!-- HERO -->
+            <section class="hero">
+                <div class="hero-badge">⚡ Instant Delivery</div>
+                <h1>Buy Data<br><span class="highlight">Instantly & Securely</span></h1>
+                <p>Top up mobile data in seconds. Fast, secure, and reliable.</p>
+                <div class="trust-bar">
+                    <div class="trust-item">🔒 Secured</div>
+                    <div class="trust-item">⚡ Instant</div>
+                    <div class="trust-item">🇬🇭 Ghana</div>
+                </div>
+            </section>
+
+            <!-- PURCHASE CARD -->
+            <div class="card">
+                <div class="card-title"><i class="fas fa-satellite-dish"></i> Purchase Data Bundle</div>
+
+                <div class="network-grid">
+                    <div class="network-card" data-network="MTN" onclick="selectNetwork('MTN', this)">
+                        <div class="net-emoji"><i class="fas fa-signal"></i></div>
+                        <div class="net-name">MTN Ghana</div>
+                    </div>
+                    <div class="network-card" data-network="Vodafone" onclick="selectNetwork('Vodafone', this)">
+                        <div class="net-emoji"><i class="fas fa-tower-broadcast"></i></div>
+                        <div class="net-name">Telecel</div>
+                    </div>
+                    <div class="network-card" data-network="AirtelTigo" onclick="selectNetwork('AirtelTigo', this)">
+                        <div class="net-emoji"><i class="fas fa-mobile-screen-button"></i></div>
+                        <div class="net-name">AT (AirtelTigo)</div>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <div class="field-label">📦 Data Bundle</div>
+                    <div id="bundleTrigger" class="bundle-selector" onclick="openBundleModal()">
+                        <span id="selectedBundleText">Choose a bundle...</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHECKOUT GROUP -->
+            <div class="checkout-group">
+                <input type="hidden" id="bundle" name="bundle">
+
+                <div class="field-group">
+                    <div class="field-label">📱 Recipient Number</div>
+                    <div class="phone-input-wrap">
+                        <div class="phone-prefix">
+                            <img src="https://flagcdn.com/w20/gh.png" alt="GH" style="width:20px;border-radius:2px;">
+                            <span>+233</span>
+                        </div>
+                        <input type="tel" id="phone" placeholder="054 000 0000" maxlength="10">
+                    </div>
+                    <div id="nameVerification" style="font-size:0.75rem;font-weight:600;margin-top:6px;padding:2px 4px;display:none;"></div>
+                </div>
+
+                <div class="price-display" id="priceDisplay">
+                    <span class="price-label">Total to Pay</span>
+                    <span class="price-amount" id="priceAmount">GH₵ 0.00</span>
+                </div>
+
+                <button id="buyBtn" class="main-btn" onclick="buyData()">
+                    <div class="spinner" id="spinner"></div>
+                    <span id="btnText">🛒 Buy Now</span>
+                </button>
+            </div>
+
+        </div>
+
+<footer class="footer">
+    <div class="footer-brand">
+        <span class="footer-logo">⚡</span>
+        <span>Sci-Fi Data</span>
+    </div>
+
+    <div class="footer-text">
+        © 2026 Sci-Fi Data. All rights reserved.
+    </div>
+
+    <div class="footer-company">
+        Powered by Sci-Fi Tech Inc
+    </div>
+</footer>
+
+    </div>
 
 
 
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <span class="nav-icon">🛒</span>
+            <span>Buy Data</span>
+        </a>
+        <a href="orders.html" class="nav-item">
+            <span class="nav-icon">📦</span>
+            <span>Orders</span>
+        </a>
+        <a href="how-it-works.html" class="nav-item">
+            <span class="nav-icon">📖</span>
+            <span>Guide</span>
+        </a>
+        <a href="https://wa.me/233540753328" target="_blank" class="nav-item">
+            <span class="nav-icon">💬</span>
+            <span>Support</span>
+        </a>
+    </nav>
 
+</div>
+
+<!-- BUNDLE MODAL -->
 <div id="bundleModal" class="modal">
     <div class="modal-box">
-        <div class="modal-handle"></div>
         <div class="modal-header">
             <h3 id="modalTitle">Select Bundle</h3>
             <button class="close-btn" onclick="closeModal('bundleModal')">✕</button>
@@ -1081,424 +362,211 @@
     </div>
 </div>
 
-</div>
-
-
-
-
-        <!-- FOOTER -->
-        <footer>
-            <div class="footer-links">
-                <a href="https://wa.me/233540753328" target="_blank">Support</a>
-                <a href="#" id="footerTermsLink">Terms</a>
-                <a href="#">Privacy</a>
-            </div>
-            <div class="footer-copy">© 2026 Sci-Fi Data. All rights reserved.</div>
-        </footer>
-
-    </div><!-- /screen-content -->
-</div><!-- /screen -->
-
-
-</div><!-- /phone-shell -->
-
 <!-- TERMS MODAL -->
-
 <div id="termsModal" class="modal">
     <div class="modal-box">
-        <div class="modal-handle"><div class="modal-handle-bar"></div></div>
         <div class="modal-header">
             <h3>Terms & Conditions</h3>
             <button class="close-btn" id="closeModalBtn">✕</button>
         </div>
         <div class="modal-body">
-            <div class="terms-item">
-                <div class="terms-num">1</div>
-                <div class="terms-text">Data delivery is typically instant but may take up to 30 minutes depending on network load.</div>
-            </div>
-            <div class="terms-item">
-                <div class="terms-num">2</div>
-                <div class="terms-text">Ensure the phone number entered is correct before payment. No refunds for incorrect numbers.</div>
-            </div>
-            <div class="terms-item">
-                <div class="terms-num">3</div>
-                <div class="terms-text">All transactions are secured via Paystack. We do not store your payment details.</div>
-            </div>
-            <div class="terms-item">
-                <div class="terms-num">4</div>
-                <div class="terms-text">By using Sci-Fi Data, you agree to our privacy policy and service terms.</div>
+            <p style="font-size:0.82rem;color:var(--muted2);line-height:1.7;margin-bottom:12px;">By using Sci-Fi Data, you agree to the following:</p>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                    <div style="width:26px;height:26px;border-radius:50%;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.3);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:var(--accent);flex-shrink:0;">1</div>
+                    <p style="font-size:0.8rem;color:var(--muted2);line-height:1.6;">Data delivery is typically instant but may take up to 30 minutes depending on network load.</p>
+                </div>
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                    <div style="width:26px;height:26px;border-radius:50%;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.3);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:var(--accent);flex-shrink:0;">2</div>
+                    <p style="font-size:0.8rem;color:var(--muted2);line-height:1.6;">Ensure the phone number is correct before payment. No refunds for incorrect numbers.</p>
+                </div>
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                    <div style="width:26px;height:26px;border-radius:50%;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.3);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:var(--accent);flex-shrink:0;">3</div>
+                    <p style="font-size:0.8rem;color:var(--muted2);line-height:1.6;">All transactions are secured via Paystack. We do not store your payment details.</p>
+                </div>
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                    <div style="width:26px;height:26px;border-radius:50%;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.3);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:var(--accent);flex-shrink:0;">4</div>
+                    <p style="font-size:0.8rem;color:var(--muted2);line-height:1.6;">Contact support on WhatsApp if data is not delivered within 30 minutes of payment.</p>
+                </div>
             </div>
         </div>
-        <div class="modal-footer">
-            <button class="agree-btn" id="confirmTermsBtn">I Understand & Agree</button>
+        <div style="padding:16px;border-top:1px solid var(--border);">
+            <button class="main-btn" id="confirmTermsBtn">I Understand & Agree</button>
         </div>
     </div>
 </div>
 
-<!-- TOAST -->
-
 <div class="toast" id="toast"></div>
 
 <script>
-
-
-// Initialize Supabase (Ensure RLS is enabled on your Supabase dashboard!)
 const _supabase = supabase.createClient(
     "https://zhinkuoqxsmotnbsjdue.supabase.co",
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpoaW5rdW9xeHNtb3RuYnNqZHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzOTc1MzIsImV4cCI6MjA4Nzk3MzUzMn0.Kw5BDJDH9WOAiE3a-P6ylQiseErYG-mHCFi5fgamnUY"
 );
 
-// Global State Variables
 let allBundles = [];
 let selectedNetwork = null;
-let lastVerifiedNumber = ""; // Tracks lookups to prevent duplicate webhook spam
+let lastVerifiedNumber = "";
 
-
-
-// Add this function to your existing <script> block
 async function loadBundles() {
     try {
-        // Fetch data from the 'bundles' table
-        const { data, error } = await _supabase
-            .from('bundles')
-            .select('*');
-
-        if (error) {
-            console.error("Error fetching bundles:", error);
-            showToast("Failed to load bundles", "error");
-            return;
-        }
-
-        // Store the data in your global variable
+        const { data, error } = await _supabase.from('bundles').select('*');
+        if (error) { showToast("Failed to load bundles", "error"); return; }
         allBundles = data;
-        console.log("Bundles loaded:", allBundles);
-    } catch (err) {
-        console.error("Unexpected error:", err);
-    }
+    } catch (err) { console.error(err); }
 }
 
-
-
-
-
-// ═══════════════════════════════════════
-// MOBILE MONEY NAME VERIFICATION
-// ═══════════════════════════════════════
 async function verifyMobileMoneyName() {
     const phoneInput = document.getElementById("phone");
     const nameDisplay = document.getElementById("nameVerification");
-    const MAKE_LOOKUP_URL = "https://cloud.activepieces.com/api/v1/webhooks/52c9FefTQeztOkvcgzPwP/sync";
- // Replace with your real Webhook link
-
-    let value = phoneInput.value.trim().replace(/\s+/g, ''); // strip out any extra spaces
-    
-    // 1. Reset display if user deletes text or drops below 10 digits
-    if (value.length < 10) {
-        nameDisplay.style.display = "none";
-        nameDisplay.innerText = "";
-        return;
-    }
-
-    // 2. Make sure they have tapped an official network card first
-    if (!selectedNetwork) {
-        showToast("Please choose a network first!", "error");
-        return;
-    }
-
-    // 3. Only fire if the 10-digit number has actually changed
+    const LOOKUP_URL = "https://cloud.activepieces.com/api/v1/webhooks/52c9FefTQeztOkvcgzPwP/sync";
+    let value = phoneInput.value.trim().replace(/\s+/g, '');
+    if (value.length < 10) { nameDisplay.style.display = "none"; nameDisplay.innerText = ""; return; }
+    if (!selectedNetwork) { showToast("Please choose a network first!", "error"); return; }
     if (value.length === 10 && value !== lastVerifiedNumber) {
-        lastVerifiedNumber = value; 
-
-        // Map your layout's network types to Paystack API bank codes
-        let paystackBankCode = "";
-        if (selectedNetwork === "MTN") paystackBankCode = "MTN";
-        else if (selectedNetwork === "Vodafone") paystackBankCode = "VOD";
-        else if (selectedNetwork === "AirtelTigo") paystackBankCode = "ATL";
-
-        // Show a temporary styling while processing background network fetch
+        lastVerifiedNumber = value;
+        let paystackBankCode = selectedNetwork === "MTN" ? "MTN" : selectedNetwork === "Vodafone" ? "VOD" : "ATL";
         nameDisplay.style.display = "block";
         nameDisplay.style.color = "var(--muted)";
         nameDisplay.innerHTML = `⏳ Verifying details...`;
-
         try {
-            const response = await fetch(MAKE_LOOKUP_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    phoneNumber: String(value),
-                    networkCode: paystackBankCode
-                })
+            const response = await fetch(LOOKUP_URL, {
+                method: "POST", headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ phoneNumber: String(value), networkCode: paystackBankCode })
             });
-
             const result = await response.json();
-
             if (result.status === "success" && result.name) {
-                // Update layout to display verified customer legal registry name
                 nameDisplay.style.color = "var(--green)";
                 nameDisplay.innerHTML = `👤 Registered Owner: <strong>${result.name}</strong>`;
             } else {
-                // Fail gracefully if number isn't registered on MoMo
                 nameDisplay.style.color = "var(--red)";
                 nameDisplay.innerHTML = `⚠️ Number details could not be resolved`;
             }
         } catch (error) {
-            console.error("Verification error:", error);
             nameDisplay.style.color = "var(--red)";
-            nameDisplay.innerHTML = `❌ Error connecting to database lookup`;
+            nameDisplay.innerHTML = `❌ Error connecting to lookup`;
         }
     }
 }
 
-// ═══════════════════════════════════════
-// INITIALIZATION & EVENT LISTENERS
-// ═══════════════════════════════════════
 document.addEventListener("DOMContentLoaded", () => {
     loadBundles();
-
-    // Hook up lookup verification to telephone field modifications
-    const phoneInput = document.getElementById("phone");
-    phoneInput.addEventListener("input", verifyMobileMoneyName);
-
-    // Navigation and menu toggles
+    document.getElementById("phone").addEventListener("input", verifyMobileMoneyName);
     const menuBtn = document.getElementById("menuBtn");
-    const menu    = document.getElementById("menu");
+    const menu = document.getElementById("menu");
     menuBtn.addEventListener("click", e => { e.stopPropagation(); menu.classList.toggle("show"); });
     window.addEventListener("click", () => menu.classList.remove("show"));
-
-    // Modal UI Handlers
-    const openModal  = () => document.getElementById("termsModal").classList.add("open");
-    const closeModal = () => document.getElementById("termsModal").classList.remove("open");
-
-    document.getElementById("termsLink").addEventListener("click", e => {
-        e.preventDefault(); e.stopPropagation();
-        menu.classList.remove("show"); openModal();
-    });
-    document.getElementById("footerTermsLink").addEventListener("click", e => { e.preventDefault(); openModal(); });
-    document.getElementById("closeModalBtn").addEventListener("click", closeModal);
-    document.getElementById("confirmTermsBtn").addEventListener("click", closeModal);
-    document.getElementById("termsModal").addEventListener("click", e => { if (e.target === e.currentTarget) closeModal(); });
+    const openTerms  = () => document.getElementById("termsModal").classList.add("open");
+    const closeTerms = () => document.getElementById("termsModal").classList.remove("open");
+    document.getElementById("termsLink").addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); menu.classList.remove("show"); openTerms(); });
+    document.getElementById("closeModalBtn").addEventListener("click", closeTerms);
+    document.getElementById("confirmTermsBtn").addEventListener("click", closeTerms);
+    document.getElementById("termsModal").addEventListener("click", e => { if (e.target === e.currentTarget) closeTerms(); });
 });
 
-
-
-
-// Open the bundle modal and inject list
-
-// 1. Unified function to open and render
 function openBundleModal(network = selectedNetwork) {
-    if (!network) {
-        showToast("Please select a network first", "error");
-        return;
-    }
-
-    const modal = document.getElementById('bundleModal');
-    const list = document.getElementById('bundleList');
-    const title = document.getElementById('modalTitle');
-    
-
-   const modalBox = document.querySelector('.modal-box');
-    
-    modalBox.className = `modal-box ${network}`;
-
-    title.textContent = `${network} Data Bundles`;
-    list.innerHTML = ''; // Clear previous
-
-    const filtered = allBundles.filter(b => b.network.toLowerCase() === network.toLowerCase());
-
-    filtered.forEach(b => {
-        const div = document.createElement('div');
-        div.className = 'bundle-item ${network}';
-        
-        // Use a clean event listener
-        div.onclick = () => {
-            selectBundle(b);
-        };
-        
-        div.innerHTML = `
-            <div class="bundle-item.${network}">
-                <strong>${b.size}</strong><br>
-                <small>GH₵ ${b.price}</small>
-            </div>
-            <button class="select-btn">Select</button>
-        `;
-        list.appendChild(div);
-    });
-
-    modal.classList.add('open');
+    if (!network) { showToast("Please select a network first", "error"); return; }
+    renderBundlesForNetwork(network);
+    document.getElementById('bundleModal').classList.add('open');
 }
 
-
-function closeModal(id) {
-    document.getElementById(id).classList.remove('open');
-}
-
-
-// ═══════════════════════════════════════
-// INTERACTIVE APPS FLOW CONTROLLERS
-// ═══════════════════════════════════════
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
 function selectNetwork(network, el) {
     selectedNetwork = network;
     document.querySelectorAll('.network-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
-    
-    populateBundles(allBundles.filter(b => b.network.toLowerCase() === network.toLowerCase()));
     document.getElementById('priceDisplay').classList.remove('visible');
-
-    // Reset verification tracker so network changes re-validate numbers accurately
     lastVerifiedNumber = "";
     verifyMobileMoneyName();
-
-    // Open the modal
-    const modal = document.getElementById('bundleModal');
-    modal.classList.add('open');
-    
-    // Set title dynamically
     document.getElementById('modalTitle').textContent = `${network} Data Bundles`;
-    
-    // Fetch/Render bundles for that specific network
     renderBundlesForNetwork(network);
+    document.getElementById('bundleModal').classList.add('open');
 }
-
-// 2. Build the list dynamically
-
-
 
 function renderBundlesForNetwork(network) {
     const list = document.getElementById('bundleList');
-    const modalBox = document.querySelector('.modal-box');
-    
+    const modalBox = document.querySelector('#bundleModal .modal-box');
     modalBox.className = `modal-box ${network}`;
-    list.innerHTML = ''; 
-
+    list.innerHTML = '';
     const filtered = allBundles.filter(b => b.network.toLowerCase() === network.toLowerCase());
-    
-
-console.log("Bundles found for " + network + ":", filtered);
-
+    if (filtered.length === 0) { list.innerHTML = `<p style="text-align:center;color:var(--muted);padding:24px;font-size:0.85rem;">No bundles available for ${network} right now.</p>`; return; }
     filtered.forEach(b => {
         const div = document.createElement('div');
-        div.className = `bundle-item ${network}`; 
+        div.className = `bundle-item ${network}`;
         div.onclick = () => selectBundle(b);
-        
-        // Removed inline styles to let the CSS class handle it
-        div.innerHTML = `
-            <div>
-                <strong>${b.size}</strong>
-                <small>${b.price ? 'GH₵ ' + parseFloat(b.price).toFixed(2) : ''}</small>
-            </div>
-            <button class="select-btn">Select</button>
-        `;
+        div.innerHTML = `<div><strong>${b.size}</strong><small>GH₵ ${parseFloat(b.price).toFixed(2)}</small></div><button class="select-btn">Select</button>`;
         list.appendChild(div);
     });
 }
 
-
-
-
-
 function selectBundle(bundle) {
     document.getElementById('bundle').value = bundle.id;
-    document.getElementById('selectedBundleText').textContent = `${bundle.size} - GH₵${bundle.price}`;
-    
-    // Ensure the color sticks to the bundle's network color
-    const trigger = document.getElementById('bundleTrigger');
-    trigger.className = `bundle-selector ${bundle.network}`; 
-    
+    document.getElementById('selectedBundleText').textContent = `${bundle.size} — GH₵${bundle.price}`;
+    document.getElementById('bundleTrigger').className = `bundle-selector ${bundle.network}`;
     closeModal('bundleModal');
     updatePrice();
 }
 
-
-function populateBundles(data) {
-    const sel = document.getElementById('bundle');
-    sel.innerHTML = '<option value="" disabled selected>Choose a bundle...</option>';
-    data.forEach(item => {
-        const opt = document.createElement('option');
-        opt.value = item.id;
-        opt.textContent = `${item.network} ${item.size} — GH₵${parseFloat(item.price).toFixed(2)}`;
-        sel.appendChild(opt);
-    });
-}
-
 function updatePrice() {
     const bundleId = document.getElementById('bundle').value;
-    const bundle   = allBundles.find(b => String(b.id) === String(bundleId));
+    const bundle = allBundles.find(b => String(b.id) === String(bundleId));
     if (bundle) {
         document.getElementById('priceAmount').textContent = `GH₵ ${parseFloat(bundle.price).toFixed(2)}`;
         document.getElementById('priceDisplay').classList.add('visible');
     }
 }
 
-// ═══════════════════════════════════════
-// IN-LINE CHECKOUT AND PAYMENT CONTEXT
-// ═══════════════════════════════════════
-
 async function buyData() {
-    const phone    = document.getElementById('phone').value.trim().replace(/\s+/g, '');
+    const phone = document.getElementById('phone').value.trim().replace(/\s+/g, '');
     const bundleId = document.getElementById('bundle').value;
-    const buyBtn   = document.getElementById('buyBtn');
-    const spinner  = document.getElementById('spinner');
-    const btnText  = document.getElementById('btnText');
+    const idempotencyKey = crypto.randomUUID(); // ✅ browser-native
+
+    const buyBtn = document.getElementById('buyBtn');
+    const spinner = document.getElementById('spinner');
+    const btnText = document.getElementById('btnText');
 
     if (!phone || phone.length < 10) { showToast('Enter a valid 10-digit phone number', 'error'); return; }
-    if (!bundleId)                   { showToast('Please select a data bundle', 'error'); return; }
+    if (!bundleId) { showToast('Please select a data bundle', 'error'); return; }
 
     const bundle = allBundles.find(b => String(b.id) === String(bundleId));
-    buyBtn.disabled = true;
-    spinner.style.display = 'block';
-    btnText.textContent = 'Opening Payment...';
+    buyBtn.disabled = true; spinner.style.display = 'block'; btnText.textContent = 'Opening Payment...';
 
-    // ═══════════ NEW FRONTEND PARSING LOGIC ═══════════
-    // 1. Parse Data Size into explicit GB Integers
-    let parsedVolume = 1; // default fallback
+    let parsedVolume = 1;
     const rawSize = String(bundle.size).toUpperCase().trim();
-    if (rawSize.includes('1GB')) parsedVolume = 1;
-    else if (rawSize.includes('2GB')) parsedVolume = 2;
-    else if (rawSize.includes('3GB')) parsedVolume = 3;
-    else if (rawSize.includes('4GB')) parsedVolume = 4;
-    else {
-        // Fallback or attempt dynamic extraction if size matches things like "5GB"
-        const matchedNum = rawSize.match(/\d+/);
-        if (matchedNum) parsedVolume = parseInt(matchedNum[0], 10) * 1;
-    }
+    const matchedNum = rawSize.match(/\d+/);
+    if (matchedNum) parsedVolume = parseInt(matchedNum[0], 10);
 
-    // 2. Map legacy names like 'vodafone' to Telecel officially
     let parsedNetwork = String(bundle.network).toLowerCase().trim();
-    if (parsedNetwork === 'vodafone') {
-        parsedNetwork = 'telecel';
-    }
-    // ═══════════════════════════════════════════════════
+    if (parsedNetwork === 'vodafone') parsedNetwork = 'telecel';
 
     const handler = PaystackPop.setup({
-        key:      'pk_live_68410a36c97591a8e61aa8fc998b9e39cf51b92f',
-        email:    `${phone}@sci-fidata.com`,
-        amount:   Math.round(parseFloat(bundle.price) * 100),
+        key: 'pk_live_68410a36c97591a8e61aa8fc998b9e39cf51b92f',
+        email: `${phone}@sci-fidata.com`,
+        amount: Math.round(parseFloat(bundle.price) * 100),
         currency: "GHS",
-        ref:      'SF-' + Math.floor((Math.random() * 1000000000) + 1),
+        ref: 'SF-' + Math.floor((Math.random() * 1000000000) + 1),
         metadata: {
-            phone: phone,
-            network: parsedNetwork,          // Clean normalized string (e.g., 'telecel', 'mtn')
-            volumeInMB: `${parsedVolume}`,        // Raw, unquoted Integer (e.g., 2)
+            phone,
+            network: parsedNetwork,
+            volumeInMB: `${parsedVolume}`,
             bundle_size: bundle.size,
+            uuid: idempotencyKey, // ✅ comma fixed
             custom_fields: [
                 { display_name: "Phone Number", variable_name: "phone", value: phone },
                 { display_name: "Network", variable_name: "network", value: parsedNetwork },
-                { display_name: "Volume MB", variable_name: "volume_in_gb", value: `${parsedVolume}`},
-                { display_name: "Bundle ID", variable_name: "bundle_id", value: bundle.id }
+                { display_name: "Volume MB", variable_name: "volume_in_gb", value: `${parsedVolume}` },
+                { display_name: "Bundle ID", variable_name: "bundle_id", value: bundle.id }, // ✅ comma added
+                { display_name: "X Idempotency Key", variable_name: "x_idempotency_key", value: idempotencyKey } // ✅ fixed name + variable
             ]
         },
-        callback: response => { 
-            window.location.href = `success.html?ref=${response.reference}`; 
-        },
-        onClose:  () => {
-            buyBtn.disabled = false;
-            spinner.style.display = 'none';
-            btnText.textContent = '🛒 Buy Now';
-        }
+        callback: response => { window.location.href = `success.html?ref=${response.reference}`; },
+        onClose: () => { buyBtn.disabled = false; spinner.style.display = 'none'; btnText.textContent = '🛒 Buy Now'; }
     });
+
     handler.openIframe();
 }
+
 
 function showToast(msg, type = '') {
     const toast = document.getElementById('toast');
@@ -1507,8 +575,6 @@ function showToast(msg, type = '') {
     toast.className = `toast ${type} show`;
     setTimeout(() => toast.classList.remove('show'), 3500);
 }
-
 </script>
-
 </body>
 </html>
