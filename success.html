@@ -376,20 +376,16 @@ async function checkPayment() {
     try {
         const { data, error } = await _supabase
             .from("transactions")
-            .select("status, phone, bundle_id, network, amount, created_at")
+            .select("phone, bundle_id, network, amount, created_at")
             .eq("paystack_ref", ref)
             .maybeSingle();
 
         if (error) throw error;
 
-        const status = data?.status?.toLowerCase();
-
-        if (status === "paid" || status === "success" || status === "delivered") {
-            showSuccess(data);
-        } else if (status === "failed") {
-            showError("The payment was declined or the transaction failed.", true);
+        if (data) {
+            showSuccess(data);        // row exists = paid
         } else {
-            setTimeout(checkPayment, 3000);
+            setTimeout(checkPayment, 3000);  // not yet, poll again
         }
     } catch (err) {
         console.error("Poll error:", err);
